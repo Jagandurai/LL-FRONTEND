@@ -1,0 +1,139 @@
+.faqWrapper {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.heading {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: purple;
+   
+}
+
+.faqGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faqItem {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.faqTitle {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #e5e5e5bc;
+    transition: background-color 0.3s;
+}
+
+.faqTitle:hover {
+    background-color: pink;
+}
+
+.faqSubHeading {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-left: 20px;
+    /* Add padding to ensure text doesn't overlap the line */
+}
+
+.faqSubHeading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* Adjust the width of the line */
+    background-color: purple;
+    /* Set the color of the vertical line */
+}
+.faqText {
+    margin-right: 15px;
+}
+
+.faqIcon {
+    font-size: 24px;
+}
+
+.faqBody {
+    padding: 10px 15px;
+    background-color: #fff;
+    position: relative;
+    /* Position context for the pseudo-element */
+}
+
+.faqBody::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 0;
+    background-color:green;
+    /* Set the color of the vertical line */
+    animation: drawLine 1s forwards;
+    /* Apply the animation */
+}
+
+/* Define the animation */
+@keyframes drawLine {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+        /* Line expands to the full height of the .faqBody */
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 20px;
+    }
+
+    .faqSubHeading {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faqWrapper {
+        padding: 10px;
+    }
+
+    .faqSubHeading {
+        font-size: 14px;
+    }
+
+    .faqText {
+        font-size: 14px;
+    }
+
+    .faqIcon {
+        font-size: 20px;
+    }
+}

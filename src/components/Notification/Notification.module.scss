@@ -1,0 +1,115 @@
+
+.toastCustom {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: cursive;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0px 4px 12px green;
+}
+
+.Toastify__toast--info {
+    background-color: #ffeb3b;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Toast container position */
+.Toastify__toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    width: auto;
+    max-width: 350px;
+    padding: 0;
+}
+
+/* Toast body styling */
+.Toastify__toast-body {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Hide the progress bar */
+.Toastify__progress-bar {
+    display: none;
+}
+
+/* Close button customization */
+.Toastify__toast-close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    background: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+/* Cancel mark (X) styling */
+.Toastify__toast-close-button:before {
+    content: '×';
+    /* X mark for the close button */
+    font-size: 20px;
+    color: #333;
+}
+
+/* Media queries for responsiveness */
+
+/* For screens smaller than 768px (tablets) */
+@media (max-width: 768px) {
+    .Toastify__toast-container {
+        left: 10px;
+        /* Decrease left padding */
+        bottom: 15px;
+        /* Adjust bottom spacing */
+    }
+
+    .toastCustom {
+        font-size: 12px;
+        /* Smaller font size */
+        padding: 10px;
+        /* Reduced padding */
+    }
+
+    .Toastify__toast-body {
+        font-size: 14px;
+        /* Smaller text for better readability */
+    }
+
+    .Toastify__toast-close-button {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* For screens smaller than 480px (mobile phones) */
+@media (max-width: 480px) {
+    .Toastify__toast-container {
+        left: 5px;
+        /* Even smaller left padding */
+        bottom: 10px;
+        /* Adjust bottom spacing */
+    }
+
+    .toastCustom {
+        font-size: 11px;
+        /* Further reduced font size */
+        padding: 8px;
+        /* Reduced padding */
+    }
+
+    .Toastify__toast-body {
+        font-size: 12px;
+        /* Adjusted text size for smaller screens */
+    }
+
+    .Toastify__toast-close-button {
+        top: 3px;
+        right: 3px;
+    }
+}

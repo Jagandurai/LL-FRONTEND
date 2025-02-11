@@ -1,0 +1,135 @@
+.trailServiceContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    /* Increased padding for more spacing */
+    background-color: #fd7d148f;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: 'sans-serif';
+    min-height: 500px;
+    /* Increased height */
+
+    /* Responsive Design: Adjust layout for smaller screens */
+    @media (max-width: 768px) {
+        flex-direction: column;
+        /* Stack elements vertically */
+        text-align: center;
+        /* Center-align text */
+        padding: 20px;
+        margin: 30px;
+        /* Reduced padding */
+    }
+    
+}
+
+.content {
+    flex: 1;
+    text-align: left;
+    margin-right: 30px;
+    /* Added margin for spacing */
+
+    @media (min-width: 768px) {
+        padding-left: 50px;
+        /* Added padding on larger screens */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #54081f;
+        margin-bottom: 10px;
+
+        @media (max-width: 768px) {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    }
+
+    p {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 40px;
+        word-spacing: 0.18rem;
+        max-width: 650px;
+        
+
+        @media (max-width: 768px) {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7rem;
+           
+        }
+    }
+
+    .bookButton {
+        background-color: #a83256;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: #8e2a48;
+        }
+
+        @media (max-width: 768px) {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+    }
+}
+
+.imageContainer {
+    flex: 1;
+    max-width: 300px;
+    /* Adjusted max-width */
+    margin-left: 20px;
+    /* Added margin to separate image from content */
+    position: relative;
+
+    @media (min-width: 768px) {
+        padding-right: 50px;
+        /* Added padding for spacing on larger screens */
+        max-width: 400px;
+        
+        /* Increased max-width for larger screens */
+    }
+
+    img {
+        width: 100%;
+        /* Make image responsive */
+        height: auto;
+        /* Ensure proper aspect ratio */
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 768px) {
+            margin-bottom: 20px;
+                        /* Added margin below image on small screens */
+        }
+    }
+
+    .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        z-index: -1;
+    }
+}

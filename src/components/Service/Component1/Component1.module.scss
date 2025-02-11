@@ -1,0 +1,116 @@
+/* Base container styles */
+.expandingCardsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    height: 500px;
+    /* Default height for larger screens */
+}
+
+/* Wrapper styles */
+.cardsWrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    scroll-behavior: smooth;
+    /* Smooth scrolling */
+}
+
+/* Card styles */
+.card {
+    flex: 1;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: flex 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    /* Position the title correctly */
+}
+
+/* Active card style */
+.card.active {
+    flex: 5;
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* Non-active card style */
+.card:not(.active) {
+    flex: 1;
+    opacity: 0.7;
+}
+
+/* Title styling for non-active cards */
+.card:not(.active) h3 {
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    left: 30px;
+    bottom: 10px;
+    font-size: 1.5rem;
+    text-align: left;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Media Query for Phones (468px and below) */
+@media (max-width: 468px) {
+    .expandingCardsContainer {
+        overflow-x: auto;
+        width: 100%;
+        height: auto;
+    }
+
+    .cardsWrapper {
+        width: max-content;
+    }
+
+    .card {
+        flex: 0 0 300px;
+        height: 250px;
+        font-size: 0.9rem;
+    }
+
+    .card.active {
+        flex: 0 0 250px;
+    }
+
+    /* Adjust non-active card title for smaller screens */
+    .card:not(.active) h3 {
+        transform: rotate(90deg);
+        /* Reset rotation */
+        position: relative;
+        /* Position back in normal layout */
+        font-size: 1.2rem;
+        /* Allow text to wrap */
+        left: 0;
+        /* Reset left position */
+        bottom: 0;
+        /* Reset bottom position */
+    }
+}
+
+/* Optional: Custom Scrollbar Styling */
+.expandingCardsContainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+.expandingCardsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(57, 4, 249, 0.5);
+    border-radius: 10px;
+}
+
+.expandingCardsContainer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+}

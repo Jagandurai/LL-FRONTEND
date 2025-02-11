@@ -1,0 +1,39 @@
+{
+  "name": "personal-portfolio-2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@mui/icons-material": "^6.3.1",
+    "@mui/material": "^6.3.1",
+    "@mui/x-date-pickers": "^7.23.3",
+    "@syncfusion/ej2-react-calendars": "^28.1.37",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "emailjs-com": "^3.2.0",
+    "firebase": "^11.1.0",
+    "framer-motion": "^8.0.2",
+    "lightgallery": "^2.8.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^4.12.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^7.1.1",
+    "react-slick": "^0.29.0",
+    "react-toastify": "^11.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "sass": "^1.83.4",
+    "vite": "^4.0.0"
+  }
+}

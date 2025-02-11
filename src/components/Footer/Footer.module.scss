@@ -1,0 +1,209 @@
+@import '../../styles/contants.scss';
+
+.footer {
+    background-color: #ffffff;
+    padding: 50px 0;
+    border-top: 5px solid orange;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        font-family: "Eudoxus Sans", sans-serif;
+        gap: 2rem;
+        padding: 0 20px;
+    }
+
+    .footerTop {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 3rem;
+        margin-left: 50px;
+
+        .footerBrand {
+            flex: 1;
+
+            .footerLogo {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: rgb(48, 60, 39);
+            }
+
+            .footerText {
+                margin-top: 1rem;
+                color: #333333;
+                font-size: 1rem;
+                letter-spacing: 0.015rem;
+                line-height: 1.6;
+            }
+
+            .socialList {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+                padding-left: 0;
+                list-style: none;
+
+                .socialLink {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: orange;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: orange;
+                    }
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+
+        .footerList {
+            flex: 1;
+            list-style: none;
+
+            .footerListTitle {
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .footerListItem {
+                margin-bottom: 1rem;
+                color: #333333;
+                font-weight: 400;
+                font-size: 1rem;
+                line-height: 2rem;
+                text-decoration: none;
+                position: relative;
+
+                p {
+                    margin: 0;
+                }
+
+                a {
+                    text-decoration: none !important;
+                    color: inherit;
+
+                    &:hover {
+                        color: orange;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: -15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: orange;
+                }
+            }
+
+            // Remove the dot from address items specifically
+            .addressContent {
+                .footerListItem {
+                    &::before {
+                        content: none !important; // Remove dot for address items
+                    }
+                }
+            }
+        }
+
+        .addressContent {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .addressIcon {
+            width: 20px;
+            vertical-align: middle;
+        }
+    }
+
+    .footerBottom {
+        background-color: black;
+        color: white;
+        padding: 10px 0;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .copyrightText {
+            font-size: 1rem;
+            word-spacing: 0.3rem;
+            letter-spacing: 0.02rem;
+            display: flex;
+
+            .copyrightLink {
+                color: orange;
+            }
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .footerTop {
+
+            .footerBrand,
+            .footerList {
+                flex: 0 0 48%;
+                /* Allow them to fit on one line */
+            }
+
+            .footerList {
+                margin-top: 0;
+            }
+        }
+
+        /* Ensure address and footer brand are on the same line */
+        .addressContent {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footerBottom {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footerTop {
+
+            .footerBrand,
+            .footerList {
+                flex: 100%;
+                /* Stack items */
+                margin-bottom: 2rem;
+            }
+
+            .footerList {
+                margin-top: 1rem;
+            }
+        }
+
+        .footerBottom {
+            font-size: 0.8rem;
+        }
+    }
+}
