@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Hero.module.scss";
-import servicevideo from "./servicevideo.mp4"; // Import the video
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -21,14 +20,14 @@ const Hero = () => {
           preload="auto" // Ensure the video is preloaded
           onCanPlay={handleVideoLoad} // Trigger when video is ready to play
         >
-          <source src={servicevideo} type="video/mp4" />
+          <source src="https://res.cloudinary.com/dtiaycw2o/video/upload/v1756199958/servicevideo_tmmdcb.webm" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       <div className={styles.heroContent}>
         <h1>Welcome to Our Services</h1>
         <p>Discover our wide range of services tailored for you.</p>
-        <button className={styles.heroButton}>Learn More</button>
+        <button className={styles.heroButton}>Variety of Makeup</button>
       </div>
     </section>
   );

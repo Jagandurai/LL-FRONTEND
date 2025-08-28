@@ -1,6 +1,9 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { BookingProvider } from './components/Booking/BookingContext';
+import Booking from './components/Booking/Booking';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Advertisement from './components/Advertisement/Advertisment';
 
 // Lazy load components
 const Experties = lazy(() => import('./components/Experties/Experties'));
@@ -26,7 +29,7 @@ const App = () => {
   return (
     <BookingProvider> {/* Wrap the entire app inside the BookingProvider */}
       <Router>
-        <div className={`bg-primary ${css.container}`}>
+        <div className={`${css.container}`}>
           {/* Lazy-loaded Header */}
           <Suspense fallback={null}>
             <Header />
@@ -36,7 +39,7 @@ const App = () => {
             <Route path="/" element={
               <>
                 {/* Lazy-loaded Components */}
-                <Suspense fallback={<div>Loading Hero...</div>}>
+                <Suspense fallback={<div>Welcome To Lovely Looks Beauty Salon...</div>}>
                   <Hero />
                 </Suspense>
                 <Suspense fallback={null}>
@@ -91,8 +94,12 @@ const App = () => {
             <WhatsApp />
           </Suspense>
           <Suspense fallback={null}>
-            <Notification />
+            {/* <Notification /> */}
           </Suspense>
+          <Suspense fallback={null}>
+            <Booking />
+          </Suspense>
+          <Advertisement />
         </div>
       </Router>
     </BookingProvider>

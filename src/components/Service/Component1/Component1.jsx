@@ -7,26 +7,26 @@ const ExpandingCards = () => {
   const cardsRef = useRef([]); // To reference all the card elements
 
   const cards = [
-    { id: 1, image: "/h1.jpg", title: "Card 1" },
-    { id: 2, image: "/h2.jpg", title: "Card 2" },
-    { id: 3, image: "/h3.jpg", title: "Card 3" },
-    { id: 4, image: "/h4.jpg", title: "Card 4" },
-    { id: 5, image: "/h5-rubberband.jpg", title: "Card 5" },
+    { id: 1, image: "https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199685/hairstyle1_k2mz5o.webp", title: "PONYTAIL" },
+    { id: 2, image: "https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199686/hairstyle2_q8qr8y.webp", title: "WATERFALL" },   
+    { id: 3, image: "https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199686/hairstyle3_iaebm5.webp", title: "CURLS" },
+    { id: 4, image: "https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199686/hairstyle4_bcorjl.webp", title: "RUBBER BAND" },
+    { id: 5, image: "https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199687/hairstyle5_uuitxi.webp", title: "MESSI" },
   ];
 
   const handleMouseMove = (e) => {
     const container = containerRef.current;
     const containerRect = container.getBoundingClientRect();
-    const mouseX = e.clientX - containerRect.left; // Mouse position within the container
-    const percentage = mouseX / containerRect.width; // Calculate percentage of mouse position
+    const mouseX = e.clientX - containerRect.left; 
+    const percentage = mouseX / containerRect.width; 
 
-    // Get the index of the card based on the mouse position
+
     const index = Math.floor(percentage * cards.length);
-    setActiveIndex(index); // Set the active card based on mouse position
+    setActiveIndex(index); 
   };
 
   useEffect(() => {
-    // Scroll the container to center the active card
+
     const container = containerRef.current;
     const activeCard = cardsRef.current[activeIndex];
 

@@ -1,115 +1,131 @@
-
-.toastCustom {
-    font-size: 14px;
-    font-weight: bold;
-    font-family: cursive;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0px 4px 12px green;
-}
-
-.Toastify__toast--info {
-    background-color: #ffeb3b;
-    color: black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Toast container position */
-.Toastify__toast-container {
+.modal {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 9999;
-    width: auto;
-    max-width: 350px;
-    padding: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: hsla(0, 0%, 0%, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1000;
+    animation: popup 1s ease-in-out 5s forwards;
 }
 
-/* Toast body styling */
-.Toastify__toast-body {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.5;
+@keyframes popup {
+    to {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
 }
 
-/* Hide the progress bar */
-.Toastify__progress-bar {
-    display: none;
-}
-
-/* Close button customization */
-.Toastify__toast-close-button {
+.modalCloseOverlay {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    color: black;
-    background: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.modalContent {
+    position: relative;
+    max-width: 350px;
+    margin: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 2;
+    animation: scaleUp 0.5s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modalCloseBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff6b6b;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
     border: none;
-    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Cancel mark (X) styling */
-.Toastify__toast-close-button:before {
-    content: '×';
-    /* X mark for the close button */
-    font-size: 20px;
+.modalCloseBtn:hover {
+    opacity: 0.9;
+}
+
+.newsletterImg {
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+        text-align: center;
+        padding-top: 20px;
+    }
+}
+
+.newsletter {
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.newsletterHeader {
+    margin-bottom: 20px;
+}
+
+.newsletterTitle {
     color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
-/* Media queries for responsiveness */
-
-/* For screens smaller than 768px (tablets) */
-@media (max-width: 768px) {
-    .Toastify__toast-container {
-        left: 10px;
-        /* Decrease left padding */
-        bottom: 15px;
-        /* Adjust bottom spacing */
-    }
-
-    .toastCustom {
-        font-size: 12px;
-        /* Smaller font size */
-        padding: 10px;
-        /* Reduced padding */
-    }
-
-    .Toastify__toast-body {
-        font-size: 14px;
-        /* Smaller text for better readability */
-    }
-
-    .Toastify__toast-close-button {
-        top: 5px;
-        right: 5px;
-    }
+.newsletterDesc {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-/* For screens smaller than 480px (mobile phones) */
-@media (max-width: 480px) {
-    .Toastify__toast-container {
-        left: 5px;
-        /* Even smaller left padding */
-        bottom: 10px;
-        /* Adjust bottom spacing */
-    }
+.emailField {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 16px;
+    width: 100%;
+}
 
-    .toastCustom {
-        font-size: 11px;
-        /* Further reduced font size */
-        padding: 8px;
-        /* Reduced padding */
-    }
+.btnNewsletter {
+    background: #111;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
+}
 
-    .Toastify__toast-body {
-        font-size: 12px;
-        /* Adjusted text size for smaller screens */
-    }
-
-    .Toastify__toast-close-button {
-        top: 3px;
-        right: 3px;
-    }
+.btnNewsletter:hover {
+    background: #ff6b6b;
 }

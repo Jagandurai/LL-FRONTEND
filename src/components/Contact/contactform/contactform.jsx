@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
-import styles from './contactform.module.scss'; // Import your SCSS module
-import { toast, ToastContainer } from 'react-toastify';  // Import toast and ToastContainer
-import 'react-toastify/dist/ReactToastify.css';  // Import styles for react-toastify
+import styles from './contactform.module.scss';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactForm = () => {
   const {
@@ -15,32 +15,32 @@ const ContactForm = () => {
   const [disabled, setDisabled] = useState(false);
 
   const onSubmit = async (data) => {
-    const { name, phone, subject, message } = data; // Extract phone instead of email
+    const { name, phone, subject, message } = data;
+
     try {
       setDisabled(true);
 
       const templateParams = {
         name,
-        phone, // Include phone number instead of email
+        phone,
         subject,
         message,
       };
 
-      // Send the email using EmailJS with provided credentials
       await emailjs.send(
-        'service_zoumudh',  // Your Service ID
-        'template_60i2wae',  // Your Template ID
-        templateParams,      // Data object with form values
-        '2oWDW3PThT-1qOPT4'  // Your Public Key
+        'service_zoumudh',
+        'template_60i2wae',
+        templateParams,
+        '2oWDW3PThT-1qOPT4'
       );
 
-      toast.success('Form submission was successful!');  // Show success toast
+      toast.success('Form submission was successful!');
     } catch (e) {
       console.error(e);
-      toast.error('Uh oh. Something went wrong.');  // Show error toast
+      toast.error('Uh oh. Something went wrong.');
     } finally {
       setDisabled(false);
-      reset();  // Reset the form after successful submission
+      reset();
     }
   };
 
@@ -55,13 +55,9 @@ const ContactForm = () => {
         </div>
 
         <div className={styles.contactForm}>
-          <form
-            id="contact-form"
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-          >
+          <form id="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className={`${styles.formRow} row`}>
-              <div className="col-12 col-md-6">
+              <div className="col-12">
                 <input
                   type="text"
                   name="name"
@@ -75,15 +71,14 @@ const ContactForm = () => {
                 {errors.name && <span className={styles.errorMessage}>{errors.name.message}</span>}
               </div>
 
-              {/* Added margin bottom to create space between Name and Phone Number input fields */}
-              <div className="col-12 col-md-6" style={{ marginTop: '15px' }}>
+              <div className="col-12" style={{ marginTop: '15px' }}>
                 <input
-                  type="tel" // Changed to 'tel' for phone number input
+                  type="tel"
                   name="phone"
                   {...register('phone', {
                     required: { value: true, message: 'Please enter your phone number' },
                     pattern: {
-                      value: /^[0-9]{10}$/, // Simple pattern for 10-digit phone number (adjust as needed)
+                      value: /^[0-9]{10}$/,
                       message: 'Please enter a valid 10-digit phone number',
                     },
                   })}
@@ -123,18 +118,21 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <button
-              className={`${styles.submitBtn} btn btn-primary`}
-              disabled={disabled}
-              type="submit"
-            >
-              Submit
-            </button>
+            <div className={`${styles.formRow} row`}>
+              <div className="col-12">
+                <button
+                  className={`${styles.submitBtn} btn btn-primary`}
+                  disabled={disabled}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
 
-      {/* ToastContainer to display the toasts */}
       <ToastContainer />
     </div>
   );

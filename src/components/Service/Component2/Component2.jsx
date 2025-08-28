@@ -1,19 +1,17 @@
 import React from 'react';
-import styles from './Component2.module.scss'; // Import the SCSS module
-import blogVideo from './mehandi.mp4'; 
-import { useBookingContext } from '/src/components/Booking/BookingContext';  // Adjust the path to your actual BookingContext file
+import styles from './Component2.module.scss'; 
+import { useBookingContext } from '/src/components/Booking/BookingContext';  
 
 const Component2 = () => {
-  const { toggleForm } = useBookingContext();  // Correctly call the hook inside the component
+  const { toggleForm } = useBookingContext();  
   const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
-
+  const formattedDate = currentDate.toISOString().split('T')[0]; 
   return (
     <div className={styles.container}>
       <div className={styles.videoWrapper}>
         <video
           className={styles.video}
-          src={blogVideo}
+          src="https://res.cloudinary.com/dtiaycw2o/video/upload/v1756203443/mehandi_hqzhst.webm"
           type="video/mp4"
           autoPlay
           loop

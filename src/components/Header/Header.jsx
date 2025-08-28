@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import css from "./Header.module.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { getMenuStyles, headerVariants } from "../../utils/motion";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 import useHeaderShadow from "../../hooks/useHeaderShadow";
-
-// Import Link from react-router-dom for routing
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -14,15 +12,20 @@ const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const headerShadow = useHeaderShadow();
 
-  // Handle click outside to close menu
   useOutsideAlerter({
     menuRef,
     setMenuOpened,
   });
 
-  // Function to toggle the menu when the icon is clicked
   const toggleMenu = () => {
-    setMenuOpened((prev) => !prev); // Toggle the menu state
+    setMenuOpened((prev) => !prev);
+  };
+
+  // Helper: close menu if on mobile view
+  const handleMenuItemClick = () => {
+    if (window.innerWidth <= 640) {
+      setMenuOpened(false);
+    }
   };
 
   return (
@@ -35,25 +38,67 @@ const Header = () => {
       style={{ boxShadow: headerShadow }}
     >
       <div className={`innerWidth ${css.container} flexCenter`}>
-        <div className={css.name}>𝓛𝓸𝓿𝓮𝓵𝔂 𝓛𝓸𝓸𝓴𝓼</div>
+        {/* Make the LOVELY LOOKS text clickable */}
+        <Link
+          to="/"
+          className={css.logo}
+          onClick={handleMenuItemClick}
+          style={{ textDecoration: "none" }}  // Remove underline here
+        >
+          <div
+            style={{
+              fontSize: "32px",
+              fontFamily: "serif",
+              color: "white",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            LOVELY LOOKS
+          </div>
+        </Link>
 
         {/* Menu */}
         <ul
           className={`flexCenter ${css.menu}`}
           ref={menuRef}
-          style={getMenuStyles(menuOpened)} // Dynamically adjust the menu based on state
+          style={getMenuStyles(menuOpened)}
         >
           <li>
-            <Link to="/">Home</Link> {/* Link to Home page */}
+            <Link
+              to="/"
+              onClick={handleMenuItemClick}
+              style={{ textDecoration: "none" }}  // Remove underline here
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/service">Services</Link> {/* Link to Service page */}
+            <Link
+              to="/service"
+              onClick={handleMenuItemClick}
+              style={{ textDecoration: "none" }}  // Remove underline here
+            >
+              Services
+            </Link>
           </li>
           <li>
-            <Link to="/gallery">Gallery</Link> {/* Link to Gallery page */}
+            <Link
+              to="/gallery"
+              onClick={handleMenuItemClick}
+              style={{ textDecoration: "none" }}  // Remove underline here
+            >
+              Gallery
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link> {/* Link to Contact page */}
+            <Link
+              to="/contact"
+              onClick={handleMenuItemClick}
+              style={{ textDecoration: "none" }}  // Remove underline here
+            >
+              Contact
+            </Link>
           </li>
         </ul>
 

@@ -9,7 +9,9 @@ const Footer = () => {
       <div className={css.footerTop}>
         <div className={css.container}>
           <div className={css.footerBrand}>
-            <span className={css.footerLogo}>𝓛𝓸𝓿𝓮𝓵𝓎 𝓛𝓸𝓸𝓴𝓼</span>
+            <span style={{ fontSize: "32px", fontFamily: "serif", color: "#333", fontWeight: "bold", textAlign: "left", display: "block" }}>
+              LOVELY LOOKS
+            </span>
             <p className={css.footerText}>
               At LOVELY LOOKS, we are passionate about helping you look your best with high-quality beauty and styling services.
             </p>
@@ -61,16 +63,6 @@ const Footer = () => {
             <li className={css.footerListItem}>
               <div className={css.addressContent}>
                 <img
-                  src="https://img.icons8.com/ios-filled/50/000000/address.png"
-                  alt="Address Icon"
-                  className={css.addressIcon}
-                />
-                <p>36/1, Bairaki madam street,<br /> Near Congress Building,<br /> Sholingur-631102, Tamil Nadu-India</p>
-              </div>
-            </li>
-            <li className={css.footerListItem}>
-              <div className={css.addressContent}>
-                <img
                   src="https://img.icons8.com/ios-filled/50/000000/phone.png"
                   alt="Phone Icon"
                   className={css.addressIcon}
@@ -86,6 +78,16 @@ const Footer = () => {
                   className={css.addressIcon}
                 />
                 <p>lovelylooksv@gmail.com</p>
+              </div>
+            </li>
+            <li className={css.footerListItem}>
+              <div className={css.addressContent}>
+                <img
+                  src="https://img.icons8.com/ios-filled/50/000000/address.png"
+                  alt="Address Icon"
+                  className={css.addressIcon}
+                />
+                <p>36/1, Bairaki madam street,<br /> Near Congress Building,<br /> Sholingur-631102, Tamil Nadu-India</p>
               </div>
             </li>
           </ul>
@@ -110,7 +112,7 @@ const Footer = () => {
 
           <ul className={css.footerList}>
             <li>
-              <a className={css.footerListTitle}>Condition</a>
+              <a className={css.footerListTitle}>CONDITIONS</a>
             </li>
             <li>
               <a href="" className={css.footerListItem}>Terms and Conditions</a>
@@ -128,7 +130,7 @@ const Footer = () => {
       <div className={css.footerBottom}>
         <div className={css.container}>
           <p className={css.copyrightText}>
-            <span className={css.copyrightLink}>Copyright {currentYear} 𝓛𝓸𝓿𝓮𝓵𝔂 𝓛𝓸𝓸𝓴𝓼.</span>©All Rights Reserved.
+            <span className={css.copyrightLink}>Copyright {currentYear} ʟᴏᴠᴇʟʏ ʟᴏᴏᴋꜱ. </span> ©All Rights Reserved.
           </p>
         </div>
       </div>

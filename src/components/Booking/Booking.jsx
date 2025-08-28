@@ -115,14 +115,15 @@ const Booking = () => {
             <div className={styles.formContainer}>
               <div className={styles.imageContainer}>
                 <img
-                  src="/bookingform.jpg"
-                  alt="Your image description"
+                  src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199685/bookingform3_blcgfb.jpg"
+                  alt="Booking form"
                   className={styles.image}
                 />
               </div>
 
               <div className={styles.formContent}>
                 <form ref={formRef} onSubmit={handleSubmit}>
+                  <h1 className="bookingheading">CONTACT US</h1>
                   <div className={styles.nameField}>
                     <input
                       type="text"

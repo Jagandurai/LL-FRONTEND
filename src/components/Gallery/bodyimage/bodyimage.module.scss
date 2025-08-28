@@ -62,64 +62,10 @@
     transform: scale(1.05);
 }
 
-/* Image preview overlay */
-.previewOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
 
-/* Preview container for the image */
-.previewContainer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-/* Preview image style */
-.previewImage {
-    width: 800px;
-    height: 600px;
-    object-fit: contain;
-    border-radius: 8px;
-    cursor: pointer;
-}
 
-/* Navigation arrows for image preview */
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 2rem;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1001;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-}
 
-.arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.arrow-left {
-    left: 10px;
-}
-
-.arrow-right {
-    right: 10px;
-}
 
 /* Media queries for responsive gallery layout */
 @media (max-width: 1024px) {
@@ -166,49 +112,6 @@
     .previewImage {
         width: 95%;
         height: auto;
-    }
-}
-
-/* Add more button container */
-.addMoreContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-}
-
-/* Styles for the add more button */
-.addMoreButton {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Add more button hover effect */
-.addMoreButton:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive adjustments for the add more button */
-@media (max-width: 768px) {
-    .addMoreContainer {
-        justify-content: center;
-    }
-
-    .addMoreButton {
-        width: 100%;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .addMoreButton {
-        font-size: 1rem;
-        padding: 8px 16px;
     }
 }
 
@@ -368,4 +271,499 @@
 
 .closeButton:hover {
     background-color: #f0f0f0;
+}
+
+.bookButton {
+    background-color: purple;
+    /* Red color */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 3rem;
+
+    &:hover {
+        background-color: rgb(143, 45, 143);
+        /* Darker red on hover */
+    }
+}
+
+.bookButton:focus {
+    outline: none;
+}
+
+
+/* ========================= */
+/* 🔹 Action Buttons Styling */
+/* ========================= */
+
+/* Common button style */
+.buttonBase {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    display: inline-block;
+}
+
+/* Upload (choose file & upload button) */
+.uploadButton {
+    @extend .buttonBase;
+    background-color: #007bff;
+    color: #fff;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+/* Logout button */
+.logoutButton {
+    @extend .buttonBase;
+    background-color: #dc3545;
+    color: #fff;
+
+    &:hover {
+        background-color: #a71d2a;
+    }
+}
+
+/* Google Login button wrapper (just to center) */
+.loginButtonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Add another Upload button */
+.addUploadButton {
+    @extend .buttonBase;
+    background-color: #28a745;
+    color: #fff;
+
+    &:hover {
+        background-color: #218838;
+    }
+}
+
+/* ========================= */
+/* 🔹 Toastify Custom Styling */
+/* ========================= */
+
+.Toastify__toast {
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.Toastify__toast--success {
+    background-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.Toastify__toast--error {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.Toastify__toast--info {
+    background-color: #007bff !important;
+    color: #fff !important;
+}
+
+.Toastify__toast--warning {
+    background-color: #ffc107 !important;
+    color: #333 !important;
+}
+
+/* Default styles for larger screens */
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #f9f9f9;
+}
+
+.upload-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.upload-container input[type="file"] {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.upload-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+.upload-container button:hover {
+    background: #555;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+    .upload-container {
+        width: 90%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .upload-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .upload-container input[type="file"] {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .upload-container button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+
+
+
+/* ✅ Filter Buttons */
+.filterButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap; // wrap nicely on small screens
+
+    button {
+        background: #f8f8f8;
+        color: #333;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgb(255, 0, 212);
+            color: #fff;
+            border-color: rgb(255, 0, 183);
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    /* ✅ Active filter style */
+    .active {
+        background: purple;
+        color: #fff;
+        border-color: purple;
+    }
+}
+
+/* ✅ Upload Radio Buttons */
+.checkboxGroup {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    label {
+        background: #f8f8f8;
+        border: 2px solid #ddd;
+        border-radius: 25px;
+        padding: 0.5rem 1.2rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #333;
+
+        input {
+            display: none; // hide radio itself
+        }
+
+        &:hover {
+            background: #ff4da6;
+            color: #fff;
+            border-color: #ff4da6;
+            transform: translateY(-2px);
+        }
+    }
+
+    /* ✅ Active when selected */
+    .active {
+        background: #ff4da6;
+        color: #fff;
+        border-color: #ff4da6;
+    }
+}
+
+/* 📱 Mobile-first adjustments */
+@media (max-width: 768px) {
+    .filterButtons {
+        flex-direction: column; // stack vertically
+        align-items: center;
+        gap: 0.8rem;
+
+        button {
+            width: 80%; // touch-friendly
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+        }
+    }
+
+    .checkboxGroup {
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            width: 70%;
+            text-align: center;
+            padding: 0.7rem 1rem;
+        }
+    }
+}
+
+/* 📱 Extra small phones (under 480px) */
+@media (max-width: 480px) {
+    .filterButtons {
+        gap: 0.6rem;
+
+        button {
+            width: 90%;
+            font-size: 0.95rem;
+            padding: 0.7rem 0.9rem;
+        }
+    }
+
+    .checkboxGroup {
+        label {
+            width: 85%;
+            font-size: 0.95rem;
+            padding: 0.6rem 0.9rem;
+        }
+    }
+}
+
+/* 📱 Ultra-small devices (under 360px) */
+@media (max-width: 360px) {
+    .filterButtons button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .checkboxGroup label {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+
+
+
+
+/* Add more button container */
+.addMoreContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+/* Styles for the add more button */
+.addMoreButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Add more button hover effect */
+.addMoreButton:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments for the add more button */
+@media (max-width: 768px) {
+    .addMoreContainer {
+        justify-content: center;
+    }
+
+    .addMoreButton {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .addMoreButton {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+
+//////////////////////////////\\
+/// 
+/// 
+
+
+
+/* ========================= */
+/* 🔹 Overlay */
+/* ========================= */
+.previewOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Image + buttons container */
+.previewContainer {
+    position: relative;
+    display: inline-block;
+    /* wrap tightly around image */
+}
+
+/* Preview image */
+.previewImage {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================= */
+/* 🔹 Close Button (Top-Right of Image) */
+/* ========================= */
+.previewTopBar {
+    position: absolute;
+    top: 2pc;
+    /* stick to top edge of image */
+    justify-content: center;
+    /* stick to right edge of image */
+    display: flex;
+    z-index: 5;
+}
+
+/* Base button */
+.previewButton {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 10px 0 8px;
+    /* blend with image corner */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.previewButton:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.closeBtn {
+    color: #ff1744;
+}
+
+/* ========================= */
+/* 🔹 Side Navigation Arrows */
+/* ========================= */
+.arrow {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Stick arrows OUTSIDE the image */
+.arrowLeft {
+    left: -70px;
+    /* pushed outward */
+}
+
+.arrowRight {
+    right: -50px;
+}
+
+/* ========================= */
+/* 🔹 Mobile Optimizations */
+/* ========================= */
+@media (max-width: 768px) {
+    .arrow {
+        display: none;
+        /* hide arrows on mobile, swipe instead */
+    }
+
+    .previewImage {
+        max-width: 100vw;
+        max-height: 70vh;
+    }
+
+    /* ✅ On mobile, keep close button on image corner */
+    .previewTopBar {
+        position: absolute;
+        top: 8.5pc;
+        right: 0;
+        z-index: 2100;
+    }
+
+    .previewButton {
+        padding: 6px 10px;
+    }
 }

@@ -16,16 +16,16 @@ const Hero = () => {
   return (
     <div className={styles.container}>
       {/* Four corner flower images */}
-      <img src="/homeheroflower.png" alt="Flower" className={styles.topLeft} />
-      <img src="/homeheroflower.png" alt="Flower" className={styles.topRight} />
-      <img src="/homeheroflower.png" alt="Flower" className={styles.bottomLeft} />
-      <img src="/homeheroflower.png" alt="Flower" className={styles.bottomRight} />
+      <img src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199688/homeheroflower_l0owlr.webp" alt="Flower" className={styles.topLeft} />
+      <img src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199688/homeheroflower_l0owlr.webp" alt="Flower" className={styles.topRight} />
+      <img src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199688/homeheroflower_l0owlr.webp" alt="Flower" className={styles.bottomLeft} />
+      <img src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199688/homeheroflower_l0owlr.webp" alt="Flower" className={styles.bottomRight} />
 
       {/* Center content */}
       <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className={styles.person}>
         <motion.img
           variants={slideIn("up", "tween", 0.5, 1.3)}
-          src="/person.png"
+          src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199689/person_isbwyu.webp"
           alt="Person"
         />
       </motion.div>

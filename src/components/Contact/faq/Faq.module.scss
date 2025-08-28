@@ -2,7 +2,6 @@
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    
 }
 
 .heading {
@@ -10,7 +9,6 @@
     font-size: 32px;
     margin-bottom: 30px;
     color: purple;
-   
 }
 
 .faqGroup {
@@ -24,6 +22,21 @@
     border-radius: 8px;
     overflow: hidden;
     background-color: #f9f9f9;
+
+    &:hover .faqBody {
+        max-height: 500px;
+        padding: 10px 15px;
+        transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+
+    &:hover .faqIcon::before {
+        content: '-';
+    }
+
+    &:hover .faqBody::before {
+        opacity: 1;
+        animation: drawLine 0.5s forwards;
+    }
 }
 
 .faqTitle {
@@ -45,7 +58,6 @@
     align-items: center;
     position: relative;
     padding-left: 20px;
-    /* Add padding to ensure text doesn't overlap the line */
 }
 
 .faqSubHeading::before {
@@ -55,23 +67,37 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    /* Adjust the width of the line */
     background-color: purple;
-    /* Set the color of the vertical line */
 }
+
 .faqText {
     margin-right: 15px;
 }
 
 .faqIcon {
     font-size: 24px;
+    display: inline-block;
+    transition: content 0.3s ease;
+
+    &::before {
+        content: '+';
+        /* Default symbol is plus */
+    }
+}
+
+// Change the symbol to minus when hovering over the FAQ item
+.faqItem:hover .faqIcon::before {
+    content: '-';
+    /* When hovered, show minus */
 }
 
 .faqBody {
-    padding: 10px 15px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
     background-color: #fff;
     position: relative;
-    /* Position context for the pseudo-element */
+    transition: max-height 0.5s ease, padding 0.3s ease;
 }
 
 .faqBody::before {
@@ -80,14 +106,12 @@
     left: 0;
     top: 0;
     width: 4px;
-    height: 0;
-    background-color:green;
-    /* Set the color of the vertical line */
-    animation: drawLine 1s forwards;
-    /* Apply the animation */
+    height: 100%;
+    background-color: green;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-/* Define the animation */
 @keyframes drawLine {
     0% {
         height: 0;
@@ -95,7 +119,6 @@
 
     100% {
         height: 100%;
-        /* Line expands to the full height of the .faqBody */
     }
 }
 
@@ -121,10 +144,6 @@ li {
 }
 
 @media (max-width: 480px) {
-    .faqWrapper {
-        padding: 10px;
-    }
-
     .faqSubHeading {
         font-size: 14px;
     }
@@ -133,7 +152,7 @@ li {
         font-size: 14px;
     }
 
-    .faqIcon {
+    .faqIcon::before {
         font-size: 20px;
     }
 }

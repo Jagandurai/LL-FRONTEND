@@ -1,4 +1,4 @@
-/* Default styles for larger screens (Desktop) */
+
 .bookingWrapper {
     position: fixed;
     top: 0;
@@ -8,30 +8,30 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* Dark background to overlay the content */
     display: flex;
     justify-content: center;
-    /* Center the content horizontally */
     align-items: center;
-    /* Center the content vertically */
     z-index: 2000;
     visibility: visible;
     padding: 20px;
-    /* Adds space around the form for click-to-close */
+    overflow-y: auto;
+    /* ✅ Enable vertical scroll */
 }
-
 .bookingForm {
     position: relative;
     display: flex;
+    flex-direction: row;
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
     width: 100%;
     max-width: 800px;
-    /* Limit max width */
-    max-height: 80vh;
-    /* Adjust max-height for better responsiveness */
+    max-height: 100%;
+    /* ✅ Prevent overflow of wrapper */
     box-sizing: border-box;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    /* ✅ Allow scroll if content overflows */
 }
 
 .formContainer {
@@ -51,14 +51,12 @@
     align-items: center;
     overflow: hidden;
     max-width: 50%;
-    /* Restrict image container width for larger screens */
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Ensure image fits within container without distortion */
 }
 
 .formContent {
@@ -69,7 +67,21 @@
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
+    overflow-y: auto;
+
+    h1{
+        color: rgb(117, 3, 117);
+        padding: 10px;
+        font-size: 2rem;
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+   
 }
+
 
 .nameField,
 .contactField,
@@ -78,7 +90,8 @@
 .serviceNameField {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .nameField input,
@@ -93,6 +106,7 @@
     border-radius: 4px;
     width: 100%;
     margin-bottom: 15px;
+    gap: 30px;
 }
 
 .timeField select {
@@ -115,14 +129,11 @@
     background-color: #0056b3;
 }
 
-/* Media Query for Mobile Devices */
 @media (max-width: 768px) {
     .bookingForm {
         max-width: 500px;
         max-height: 600px;
-        /* Increased max-height to accommodate the form on mobile */
         flex-direction: column;
-        /* Stack image and content vertically */
     }
 
     .formContainer {
@@ -130,30 +141,24 @@
         gap: 10px;
         height: auto;
         padding: 10px;
-        /* Added padding for better spacing inside the form */
     }
 
     .imageContainer {
         max-height: 250px;
         max-width: 500px;
         width: 100%;
-        /* Make image container take full width on mobile */
     }
 
     .image {
         width: 100%;
-        /* Adjust image to fit within container */
         height: auto;
-        /* Ensure image scales correctly */
     }
 
     .formContent {
         padding: 10px;
         overflow-y: auto;
-        /* Allow form content to scroll if necessary */
     }
 
-    /* Adjust input fields to fit the available space */
     .nameField input,
     .contactField input,
     .dateTimeField input,
@@ -161,13 +166,9 @@
     .serviceNameField input,
     .timeField select {
         padding: 8px;
-        /* Reduce padding for better use of space */
         margin-bottom: 10px;
-        /* Reduce the bottom margin to avoid pushing the button down */
         width: 100%;
-        /* Ensure all inputs take the full width */
         box-sizing: border-box;
-        /* Prevent padding from affecting width */
     }
 
     .dateTimeField{
@@ -177,13 +178,10 @@
     .bookButton {
         padding: 10px;
         margin-top: 10px;
-        /* Ensure there is space between the button and the fields */
         width: 100%;
-        /* Make button span the full width of the form */
     }
 }
 
-/* Media Query for Very Small Mobile Devices */
 @media (max-width: 480px) {
     .bookingForm {
         max-height: 100%;
@@ -200,7 +198,6 @@
         max-height: 200px;
         max-width: 400px;
         margin-top: 5px;
-        /* Adjust height for small screens */
     }
 
     .bookButton {
@@ -216,38 +213,29 @@
     }
 }
 
-/* Media Query for Very Small Mobile Devices (below 387px) */
 @media (max-width: 387px) {
     .bookingForm {
         max-height: 100%;
         flex-direction: column;
         width: 100%;
-        /* Ensure the form takes full width */
     }
 
     .formContainer {
         flex-direction: column;
         gap: 5px;
-        /* Reduce the gap between fields for better space management */
         height: auto;
         padding: 10px;
-        /* Ensure padding is maintained but not too large */
     }
 
     .imageContainer {
         max-height: 150px;
-        /* Adjust height for smaller screens */
         max-width: 400px;
-        /* Ensure the image container is properly sized */
         margin-top: 5px;
-        /* Added small margin on top */
     }
 
     .image {
         width: 100%;
-        /* Ensure image takes up full width */
         height: auto;
-        /* Ensure the image scales correctly */
     }
 
     .formContent {
@@ -255,7 +243,6 @@
         overflow-y: auto;
     }
 
-    /* Ensure all input fields have consistent width */
     .nameField input,
     .contactField input,
     .dateTimeField input,
@@ -263,27 +250,19 @@
     .serviceNameField input,
     .timeField select {
         padding: 8px;
-        /* Reduce padding for better space management */
         margin-bottom: 5px;
-        /* Reduce bottom margin to optimize space */
         width: 100%;
-        /* Make all inputs take full width */
         box-sizing: border-box;
-        /* Ensure padding doesn't affect width */
     }
 
-    /* Ensure date and time inputs (select) are the same width as other inputs */
     .dateTimeField input,
     .timeField select {
         width: 100%;
-        /* Ensure date and time fields are consistent with other inputs */
     }
 
     .bookButton {
         padding: 10px;
         margin-top: 10px;
-        /* Ensure there is space between button and fields */
         width: 100%;
-        /* Make button span full width */
     }
 }

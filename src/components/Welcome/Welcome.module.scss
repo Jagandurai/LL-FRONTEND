@@ -1,7 +1,7 @@
 .welcomeSection {
     text-align: center;
     padding: 2rem;
-    justify-content: center; // Centers content vertically
+    justify-content: center;
     align-items: center;
     background-color: white;
 
@@ -11,7 +11,8 @@
 
         p {
             font-size: 1.2rem;
-            color: #7a7a7a;
+            color: #333333;
+            font-weight: 600;
         }
 
         h1 {
@@ -36,48 +37,45 @@
         justify-content: center;
         gap: 2rem;
         flex-wrap: wrap;
+    }
 
-        .card1,
-        .card2 {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 600px;
-            height: 250px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
+    .card1,
+    .card2 {
+        position: relative;
+        width: 550px;
+        height: 250px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
 
-            .readMoreButton {
-                background-color: rgb(160, 45, 160); // Purple
-                color: white;
-                border: none;
-                border-radius: 5px;
-                padding: 0.5rem 1rem;
-                cursor: pointer;
-                font-size: 1rem;
-                text-align: center;
-                position: absolute;
-                bottom: 20px; // Positions the button 10px from the bottom of the card
-                left: 60%; // Centers the button horizontally
-                transform: translateX(-50%); // Ensures the button is truly centered
+    .cardImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Ensure the image covers the area without stretching
+        display: block;
+    }
 
-                &:hover {
-                    background-color: #573477; // Darker purple
-                }
-            }
-        }
+    .readMoreButton {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgb(160, 45, 160); // Purple
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        text-align: center;
 
-        .card1 {
-            background-image: url('/public//card2.png'); // Replace with the actual path to your first image
-        }
-
-        .card2 {
-            background-image: url('/public//card1.png'); // Replace with the actual path to your second image
+        &:hover {
+            background-color: #573477; // Darker purple
         }
     }
 
@@ -99,7 +97,7 @@
 
             .card1,
             .card2 {
-                width: 90%;
+                width: 100%;
                 height: 220px;
 
                 .readMoreButton {
@@ -130,13 +128,13 @@
             .card2 {
                 flex-direction: column;
                 align-items: center;
-                padding: 0 1rem;
+                background-size: cover;
                 width: 100%;
-                height: 200px;
+                height: 140px;
 
                 .readMoreButton {
-                    font-size: 0.8rem;
-                    padding: 0.4rem 0.7rem;
+                    font-size: 0.6rem;
+                    padding: 0.25rem 0.7rem;
                 }
             }
         }

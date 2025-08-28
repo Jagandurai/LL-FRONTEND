@@ -1,7 +1,7 @@
 @import '../../styles/contants.scss';
 
 .wrapper {
-    background-image: url('/public/home-bg-2.jpg');
+    background-image: url('https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199687/home-bg-2_mekdvx.webp');
     /* Default background image */
     background-repeat: no-repeat;
     background-size: cover;
@@ -44,6 +44,7 @@
 
             h1 {
                 color: #950a25;
+                font-size: 1.9rem;
             }
 
             .exp {
@@ -51,6 +52,7 @@
                 justify-content: space-between;
                 line-height: 40px;
                 align-items: flex-start;
+                font-size: 1.05rem;
 
                 >div {
                     flex: 1;

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "imagegallerydriveapi",
+  "private_key_id": "19381915526bdea0fa32ebd90f93cc19a50e114f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDVJkxK1wv0DOmb\nGBqrl2EsBO0U+LQG2gMdJKlHrtgaJJNk09x5Lvu49yALxT25G7d2QnZ/31BDhdzB\nc5pXEzPhB5i3sRt5RqqSr5rB1kPgpjl4IlEd3L9JHSK5y5pXmwWv7/M6MVfJC9F/\nuBmOpJ7ciUL4WZqGPMSLPdFnUUNaogz+T9NYHRQcrcHSNB5zwyMoMDxAGv211lHm\nmU91t5hhChSJ0m651tk6rUci5/bKPE57DXU0GEh1UCJH5zU20sOVmv0Ejn6Q7652\nwRoMSyiiyVLhwE89p9UfIka6sr4mHKD1mdeJC41UH0mkGjV333Iwl7Sqj1V50iAG\n+PT66ak/AgMBAAECggEAGrSArIPC8KHJhu//L2548z3uwkjirVUVPMqCFwQV+TiJ\n6wEMR3aWfTchIbhlolKRqtRq6lx9Puh/nxEvzicOwevku2cKLSioaFZuCkkhGf1Z\nh+6swRQON0faOPMEdGNs0/05ORpDiGHdrqXPNer0KGdeJ6V6UcU9TsDBArPQv4MB\nX/iDXvsJMjmVedAzysrvapfY90ULkdWNUWMHogun1/ahAeiThyNds/bZJPe1bz/B\ngB8FlJMDyU/qBMBSPYgQ2kEWPqMd9UaBx9Ooo6C0iSjueNYYxWh6p9Smm90weEiJ\nebjxMAbkYJn2EXEqCqHUqnEA5FIZZUp5sZp3e6UK0QKBgQD/RsXJvBTCTQXVWo5+\nGuPNqXXsrxOWWZo4VB0wqiEbD494QQjg+HSKY8JB05Q2mtMb+szS96RDJCEqmJji\nBUT+0mj12L/JjwbwhKyNwNoq4SgezcY3K3rTGWkFGUklY+PQUCxaTdwH3xv3ibCd\n0Ly1AQjnpG1uoJK83ALeKyEgJwKBgQDVwPVXKgjAJA+RUpY0qNoG+R+G/y3px8NI\nF1pyoTVX4sCS+gOnxDl4W5/RF83kcjgBtjRr3/YtJup1tybypA9UwyKMXu11/DBq\n8LHbKlHm6EaE3d2sFkCV43MnvKsHPNf0Fk8f+s0cp0rCVI02ol6XQ+Ve9OQ1v0fW\nRfzCKSdFKQKBgQCMXZn8J1My069VdYnMhXSlbXzOPCaFEZffSUETtTim7JNzCC+d\npIBQaDI0h+aDb/aM+AcQKeNEl+U0ytulzEf35jKYnCo45lBmiE1pVJWh5lRtO7C2\nPU44LUy15QV3bcmijbMVpKJMIb37Ctb2sARTctI2rQ8POXP2LPPWvdhlGQKBgCm6\ng6rCf/bSk19xWfVpyTZ3R9pY0qPC5bKbLIMYSYugrquCt1f3DKkcafStyvn/+kML\nSOyOSkbCRB865BWWRY/skEALABx6YRFfb7kzZ83GJo4lqfLAXVdlkcN+J31AOYBj\nIotBsO0ZE5UgYHj79a9eB9cjw7FiaCnCe/eDhTERAoGBAJLnhvBJRJVupbALjADN\n8yvDP4JhzqitbqFBAQe8zJMOgoUog1js9IOjjjknm/v6kqnBy46rTkixAa4gbyhY\n2eslFCvIMY2K6ywq3RuX/y3N9HtpxvGLhOsikCoLOrobaXIHt2DzTReGnNAIu5G5\nktPj3ku1SaSzM30+g3WcRWRo\n-----END PRIVATE KEY-----\n",
+  "client_email": "gallery-service-account@imagegallerydriveapi.iam.gserviceaccount.com",
+  "client_id": "113832633084554300560",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gallery-service-account%40imagegallerydriveapi.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

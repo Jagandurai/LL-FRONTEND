@@ -25,6 +25,7 @@
     h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
+        color: rgb(93, 5, 170);
     }
 
     p {
@@ -34,7 +35,11 @@
     }
 
     @media (max-width: 768px) {
-        text-align: center;
+        text-align:left;
+        h1 {
+                font-size: 1.91rem;
+                font-weight: 600;
+            }
     }
 }
 

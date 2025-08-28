@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function useOutsideAlerter({menuRef, setMenuOpened}) {
-  const viewport_width = document.documentElement.clientWidth;
+export default function useOutsideAlerter({ menuRef, setMenuOpened }) {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event) {
+      // Check if the click was outside the menu and viewport is mobile-sized
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        if (viewport_width <= 640) {
-            setMenuOpened(false);
+        if (window.innerWidth <= 640) {
+          setMenuOpened(false);
         }
       }
     }
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
 
+    // Listen for both mouse and touch events
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [menuRef, setMenuOpened]);
 }

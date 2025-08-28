@@ -5,8 +5,7 @@
     align-items: center;
     padding: 20px;
     overflow-x: hidden;
-    height: 500px;
-    /* Default height for larger screens */
+    height: 800px;
 }
 
 /* Wrapper styles */
@@ -31,19 +30,24 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
     position: relative;
-    /* Position the title correctly */
 }
 
-/* Active card style */
 .card.active {
-    flex: 5;
+    flex: 2.8;
     transform: scale(1.05);
     z-index: 10;
+    object-fit: contain;
+    height:500px;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 200px !important;
 }
+
+
 
 /* Non-active card style */
 .card:not(.active) {
@@ -84,24 +88,18 @@
 
     .card.active {
         flex: 0 0 250px;
+        height: 280px;
     }
 
-    /* Adjust non-active card title for smaller screens */
     .card:not(.active) h3 {
         transform: rotate(90deg);
-        /* Reset rotation */
         position: relative;
-        /* Position back in normal layout */
-        font-size: 1.2rem;
-        /* Allow text to wrap */
+        font-size: 1rem;
         left: 0;
-        /* Reset left position */
-        bottom: 0;
-        /* Reset bottom position */
+        bottom: 0;margin-top: -50px;
     }
 }
 
-/* Optional: Custom Scrollbar Styling */
 .expandingCardsContainer::-webkit-scrollbar {
     height: 8px;
 }

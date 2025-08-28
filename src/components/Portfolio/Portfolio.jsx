@@ -8,7 +8,7 @@ const Portfolio = () => {
     variants={staggerChildren}
     initial="hidden"
     whileInView="show"
-    viewport={{ once: false, amount: 0.25 }}
+    viewport={{ once: false, amount: 0.03 }}
     className={`paddings ${css.wrapper}`}>
 
       <a className="anchor" id="portfolio"></a>
@@ -26,9 +26,9 @@ const Portfolio = () => {
 
 
         <div className={`flexCenter ${css.showCase}`}>
-            <motion.img variants={fadeIn("up", "tween", .5, .6)} src="./showCase1.png" alt="project" />
-            <motion.img variants={fadeIn("up", "tween", .7, .6)} src="./showCase2.png" alt="project" />
-            <motion.img variants={fadeIn("up", "tween", .9, .6)} src="./showCase3.png" alt="project" />
+            <motion.img variants={fadeIn("up", "tween", .5, .6)} src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199690/showCase1_x8bgyk.webp" alt="project" />
+            <motion.img variants={fadeIn("up", "tween", .7, .6)} src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199690/showCase2_rswno4.webp" alt="project" />
+            <motion.img variants={fadeIn("up", "tween", .9, .6)} src="https://res.cloudinary.com/dtiaycw2o/image/upload/v1756199690/showCase3_sg0ylw.webp" alt="project" />
         </div>
       </div>
     </motion.section>

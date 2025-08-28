@@ -1,0 +1,224 @@
+import React, { useState, useEffect } from "react";
+import styles from "./bodyimage.module.scss";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode"; // ✅ Correct import
+
+const BodyImage = () => {
+  const [previewImage, setPreviewImage] = useState(null);
+  const [previewImageIndex, setPreviewImageIndex] = useState(null);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+
+  const navigate = useNavigate();
+
+  // Load login state from localStorage
+  useEffect(() => {
+    const storedLogin = localStorage.getItem("isLoggedIn");
+    const storedEmail = localStorage.getItem("userEmail");
+    if (storedLogin === "true" && storedEmail) {
+      setIsLoggedIn(true);
+      setUserEmail(storedEmail);
+      fetchImages(storedEmail);
+    }
+  }, []);
+
+  // Fetch gallery images from backend
+  const fetchImages = async (email) => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/gallery", {
+        headers: { "x-user-email": email },
+      });
+      setGalleryImages(res.data);
+    } catch (err) {
+      console.error("Error fetching images:", err);
+      alert("❌ Failed to load gallery");
+    }
+  };
+
+  // Image preview handlers
+  const handleImageClick = (image, index) => {
+    setPreviewImage(image.image_url || image);
+    setPreviewImageIndex(index);
+  };
+  const closePreview = () => {
+    setPreviewImage(null);
+    setPreviewImageIndex(null);
+  };
+  const nextImage = (e) => {
+    e.stopPropagation();
+    if (previewImageIndex !== null) {
+      const nextIndex = (previewImageIndex + 1) % galleryImages.length;
+      setPreviewImage(galleryImages[nextIndex].image_url);
+      setPreviewImageIndex(nextIndex);
+    }
+  };
+  const prevImage = (e) => {
+    e.stopPropagation();
+    if (previewImageIndex !== null) {
+      const prevIndex =
+        previewImageIndex === 0
+          ? galleryImages.length - 1
+          : previewImageIndex - 1;
+      setPreviewImage(galleryImages[prevIndex].image_url);
+      setPreviewImageIndex(prevIndex);
+    }
+  };
+
+  // Upload image
+  const handleImageUpload = async (e) => {
+    const uploadedFile = e.target.files[0];
+    if (!uploadedFile) return;
+
+    const formData = new FormData();
+    formData.append("image", uploadedFile);
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/gallery", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "x-user-email": userEmail,
+        },
+      });
+      setGalleryImages([res.data, ...galleryImages]);
+      alert("✅ Image uploaded successfully!");
+    } catch (err) {
+      console.error("Upload error:", err);
+      alert("❌ Failed to upload image");
+    }
+  };
+
+  // Delete image
+  const handleImageDelete = async (image) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/gallery/${image.id}`, {
+        headers: { "x-user-email": userEmail },
+      });
+      setGalleryImages(galleryImages.filter((img) => img.id !== image.id));
+      closePreview();
+      alert("🗑️ Image deleted successfully!");
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("❌ Failed to delete image");
+    }
+  };
+
+  // Google login success
+  const handleLoginSuccess = (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      const email = decoded.email;
+
+      console.log("✅ Logged in as:", email);
+
+      // Save login state and fetch gallery
+      setIsLoggedIn(true);
+      setUserEmail(email);
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userEmail", email);
+
+      fetchImages(email);
+    } catch (err) {
+      console.error("JWT Decode error:", err);
+      alert("❌ Failed to process login token.");
+    }
+  };
+
+  // Google logout
+  const handleLogout = () => {
+    googleLogout();
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userEmail");
+    setIsLoggedIn(false);
+    setUserEmail("");
+    setGalleryImages([]);
+  };
+
+  const handleBookNowClick = () => {
+    navigate("/service");
+  };
+
+  return (
+    <div className={styles.galleryContainer}>
+      <p className={styles.description}>
+        Explore our amazing Makeup collections.
+      </p>
+
+      <button onClick={handleBookNowClick} className={styles.bookButton}>
+        View Our Service
+      </button>
+
+      {/* Google login */}
+      {!isLoggedIn && (
+        <div style={{ marginTop: "20px" }}>
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={() => alert("❌ Google Login Failed")}
+          />
+        </div>
+      )}
+
+      {/* Logged in → gallery + actions */}
+      {isLoggedIn && (
+        <>
+          <div className={styles.actions}>
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            <button onClick={handleLogout} className={styles.logoutButton}>
+              Logout
+            </button>
+          </div>
+
+          <div className={styles.gallery}>
+            {galleryImages.map((image, index) => (
+              <div className={styles.item} key={image.id || index}>
+                <img
+                  src={image.image_url || image}
+                  alt={`Gallery Item ${index + 1}`}
+                  onClick={() => handleImageClick(image, index)}
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {previewImage && (
+        <div className={styles.previewOverlay} onClick={closePreview}>
+          <div className={styles.previewContainer}>
+            <button
+              className={`${styles.arrow} ${styles["arrow-left"]}`}
+              onClick={prevImage}
+            >
+              &lt;
+            </button>
+
+            <img src={previewImage} alt="Preview" className={styles.previewImage} />
+
+            {isLoggedIn && (
+              <button
+                className={styles.deleteIcon}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleImageDelete(galleryImages[previewImageIndex]);
+                }}
+              >
+                🗑️
+              </button>
+            )}
+
+            <button
+              className={`${styles.arrow} ${styles["arrow-right"]}`}
+              onClick={nextImage}
+            >
+              &gt;
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BodyImage;

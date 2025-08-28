@@ -9,7 +9,7 @@ const Work = () => {
     variants={staggerChildren}
     initial="hidden"
     whileInView="show"
-    viewport={{ once: false, amount: 0.25 }}
+    viewport={{ once: false, amount: 0.03 }}
     className={`paddings ${css.wrapper}`}>
     <a className="anchor" id="work"></a>
 
@@ -29,6 +29,7 @@ const Work = () => {
                   <h1>{exp.role}</h1>
                   <p>{exp.detail}</p>
                 </div>
+
               </motion.div>
             );
           })}

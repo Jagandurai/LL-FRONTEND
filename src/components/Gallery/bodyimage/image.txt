@@ -1,0 +1,260 @@
+
+import React, { useState, useEffect } from "react";
+import styles from "./bodyimage.module.scss";
+import { useNavigate } from "react-router-dom";
+
+const BodyImage = () => {
+  const initialImages = [
+    "6062066001949868674_121.webp",
+    "6059814202136183967_121.webp",
+    "6059814202136183970_121.webp",
+    "6059814202136183968_121.webp",
+    "6059814202136183961_121.webp",
+    "6059814202136183962_121.webp",
+    "6059814202136183963_121.webp",
+    "6244706411015685731_121.webp",
+    "6244706411015685732_121.webp",
+    "6287532333082985669_121.webp",
+    "6287532333082985670_121.webp",
+    "6316861170098750213_121.webp",
+    "6316861170098750212_121.webp",
+    "6316861170098750210_121.webp",
+    "6316861170098750216_121.webp",
+    "6287532333082985693_121.webp",
+    "6287532333082985692_121.webp",
+    "6287532333082985702_121.webp",
+    "6287532333082985698_121.webp",
+    "6285014490110084163_121.webp",
+    "6244706411015685733_121.webp",
+    "6244706411015685737_121.webp",
+    "6271331055017509533_121.webp",
+    "6285014490110084160_121.webp",
+    "6285014490110084159_121.webp",
+    "6152009459011011037_121.webp",
+    "6152009459011011032_121.webp",
+    "6152009459011011031_121.webp",
+    "6152009459011011030_121.webp",
+    "6062066001949868657_121.webp",
+    "6152009459011011027_121.webp",
+    "6152009459011011028_121.webp",
+    "6152009459011011026_121.webp",
+    "6152009459011011021_121.webp",
+    "6152009459011011024_121.webp",
+    "6152009459011011018_121.webp",
+    "6152009459011011020_121.webp",
+    "6152009459011011025_121.webp",
+    "6152009459011011012_121.webp",
+    "6152009459011011003_121.webp",
+    "6059853531151713991_121.webp",
+    "6152009459011011002_121.webp",
+    "6152009459011011004_121.webp",
+    "6152009459011011005_121.webp",
+    "6152009459011011006_121.webp",
+    "6152009459011010996_121.webp",
+    "6152009459011010997_121.webp",
+    "6152009459011010998_121.webp",
+    "6152009459011010999_121.webp",
+    "6152009459011011000_121.webp",
+    "6152009459011010993_121.webp",
+    "6152009459011010994_121.webp",
+    "6152009459011010995_121.webp",
+    "6152009459011010988_121.webp",
+    "6152009459011010989_121.webp",
+    "6143343207145128523_121.webp",
+    "6143343207145128526_121.webp",
+    "6221831058714902467_121.webp",
+    "6221831058714902469_121.webp",
+    "6221831058714902468_121.webp",
+    "6221831058714902472_121.webp",
+    "6062066001949868653_121.webp",
+    "6062066001949868655_121.webp",
+    "6062066001949868654_121.webp",
+    "6062066001949868658_121.webp",
+    "6062066001949868656_121.webp",
+    "6062066001949868661_121.webp",
+    "6062066001949868662_121.webp",
+    "6062066001949868664_121.webp",
+    "6062066001949868663_121.webp",
+    "6062066001949868666_121.webp",
+    "6062066001949868665_121.webp",
+    "6062066001949868667_121.webp",
+    "6062066001949868669_121.webp",
+    "6062066001949868672_121.webp",
+    "6062066001949868670_121.webp",
+    "6062066001949868671_121.webp",
+    "6062066001949868673_121.webp",
+    "6062066001949868676_121.webp",
+    "6062066001949868675_121.webp",
+    "6062066001949868679_121.webp",
+    "6062066001949868678_121.webp",
+    "6062066001949868677_121.webp",
+    "6062066001949868681_121.webp",
+    "6062066001949868680_121.webp",
+    "6062066001949868682_121.webp",
+    "6062066001949868684_121.webp",
+    "6221831058714902466_121.webp",
+    "6062066001949868683_121.webp",
+    "6062066001949868686_121.webp",
+    "6062066001949868685_121.webp",
+    "6062066001949868689_121.webp",
+    "6152009459011011022_121.webp",
+    "6062066001949868688_121.webp",
+    "6062066001949868687_121.webp",
+    "6062066001949868692_121.webp",
+    "6062066001949868691_121.webp",
+    "6062066001949868690_121.webp",
+    "6062066001949868693_121.webp",
+    "6143343207145128525_121.webp",
+    
+    
+  ];
+  
+  const [previewImage, setPreviewImage] = useState(null);
+  const [previewImageIndex, setPreviewImageIndex] = useState(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [galleryImages, setGalleryImages] = useState(initialImages);
+  const [uploadedImages, setUploadedImages] = useState([]);
+
+  const navigate = useNavigate(); // Initialize navigate for redirection
+
+  useEffect(() => {
+    const storedFormValid = localStorage.getItem("isFormValid");
+    if (storedFormValid === "true") {
+      setIsFormValid(true);
+    }
+
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("isFormValid");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  const handleImageClick = (image, index) => {
+    setPreviewImage(image);
+    setPreviewImageIndex(index);
+  };
+
+  const closePreview = () => {
+    setPreviewImage(null);
+    setPreviewImageIndex(null);
+  };
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    if (previewImageIndex !== null) {
+      const nextIndex = (previewImageIndex + 1) % galleryImages.length;
+      setPreviewImage(galleryImages[nextIndex]);
+      setPreviewImageIndex(nextIndex);
+    }
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    if (previewImageIndex !== null) {
+      const prevIndex =
+        previewImageIndex === 0 ? galleryImages.length - 1 : previewImageIndex - 1;
+      setPreviewImage(galleryImages[prevIndex]);
+      setPreviewImageIndex(prevIndex);
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (username === "123" && email === "123@gmail.com" && password === "123") {
+      setIsFormValid(true);
+      localStorage.setItem("isFormValid", "true");
+      setIsFormVisible(false);
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  };
+
+  const handleImageUpload = (e) => {
+    const uploadedFile = e.target.files[0];
+    if (uploadedFile) {
+      const uploadedImageURL = URL.createObjectURL(uploadedFile);
+      setUploadedImages([...uploadedImages, uploadedImageURL]);
+      setGalleryImages([...galleryImages, uploadedImageURL]);
+    }
+  };
+
+  const handleImageDelete = (image) => {
+    const newGallery = galleryImages.filter((img) => img !== image);
+    setGalleryImages(newGallery);
+    closePreview();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("isFormValid");
+    setIsFormValid(false);
+  };
+
+  // Redirect function for the button
+  const handleBookNowClick = () => {
+    navigate("/service"); // Redirect to service page when the button is clicked
+  };
+
+  return (
+    <div className={styles.galleryContainer}>
+      <p className={styles.description}>
+        Explore our amazing Makeup collections.
+      </p>
+
+      <button onClick={handleBookNowClick} className={styles.bookButton}>
+        View Our Service
+      </button>
+
+      <div className={styles.gallery}>
+        {galleryImages.map((image, index) => (
+          <div className={styles.item} key={index}>
+            <img
+              src={image}
+              alt={`Gallery Item ${index + 1}`}
+              onClick={() => handleImageClick(image, index)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Image preview overlay */}
+      {previewImage && (
+        <div className={styles.previewOverlay} onClick={closePreview}>
+          <div className={styles.previewContainer}>
+            <button className={`${styles.arrow} ${styles["arrow-left"]}`} onClick={prevImage}>
+              &lt;
+            </button>
+
+            <img src={previewImage} alt="Preview" className={styles.previewImage} />
+
+            {isFormValid && (
+              <button
+                className={styles.deleteIcon}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleImageDelete(previewImage);
+                }}
+              >
+                🗑️
+              </button>
+            )}
+
+            <button className={`${styles.arrow} ${styles["arrow-right"]}`} onClick={nextImage}>
+              &gt;
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BodyImage;

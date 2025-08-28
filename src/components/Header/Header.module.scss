@@ -9,8 +9,9 @@
     position: sticky;
     top: 0px;
     transition: all 300ms ease;
-    background: linear-gradient(to right, orange 0%, #ff7f50 50%, #ff6347 90%) !important;
-
+    // background: linear-gradient(to right, orange 0%, #ff7f50 50%, #ff6347 90%) !important;
+    background: #833AB4;
+        background: linear-gradient(90deg, rgb(109, 15, 172) 0%, rgba(253, 29, 29, 1) 60%, rgba(252, 176, 69, 1) 100%);
     .container {
         position: relative;
         justify-content: space-between;
@@ -36,7 +37,8 @@
                 height: calc(100vh - 6.3rem);
                 width: 50%;
                 min-width: 15rem;
-                background: white;
+                background: rgb(156, 8, 156);
+                color:white;
                 padding: 2rem;
                 display: flex;
                 border-radius: 10px;

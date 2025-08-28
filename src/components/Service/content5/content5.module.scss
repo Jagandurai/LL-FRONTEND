@@ -51,6 +51,7 @@
     h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
+        color: rgb(93, 5, 170);
     }
 
     p {
@@ -61,8 +62,9 @@
 
     @media (max-width: 768px) {
         text-align: center;
-        /* Center-align text on smaller screens */
-        padding: 0 1rem;
-        /* Add padding for smaller screens */
+        h1 {
+                font-size: 2rem;
+                font-weight: 600;
+            }
     }
 }

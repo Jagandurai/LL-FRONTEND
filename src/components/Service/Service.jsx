@@ -3,7 +3,6 @@ import React, { Suspense, lazy } from "react";
 // Lazy load components
 const Hero = lazy(() => import("./Hero/Hero"));
 const ServiceList = lazy(() => import("./ServiceList/ServiceList"));
-const Booking = lazy(() => import("../Booking/Booking"));
 const Customized = lazy(() => import("./Customized/Customized"));
 const Content1 = lazy(() => import("./content1/content1"));
 const Content2 = lazy(() => import("./content2/content2"));
@@ -18,15 +17,11 @@ const Component1 = lazy(() => import("./Component1/Component1"));
 const Component2 = lazy(() => import("./Component2/Component2"));
 const Component3 = lazy(() => import("./Component3/Component3"));
 const Switching = lazy(() => import("./Switching/Switching"));
-const Notification = lazy(() => import("../Notification/Notification"));
 
 const Service = () => {
   return (
     <div>
-      {/* Add the Notification component to display notifications */}
-      <Suspense fallback={null}>
-        <Notification />
-      </Suspense>
+      
 
       {/* Other sections of your page */}
       <Suspense fallback={null}>
@@ -73,9 +68,6 @@ const Service = () => {
       </Suspense>
       <Suspense fallback={null}>
         <ServiceList />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Booking />
       </Suspense>
     </div>
   );

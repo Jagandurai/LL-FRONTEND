@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./content8.module.scss";
-import videoSrc from "./maternity.mp4";
 
 const Content8 = () => {
   return (
@@ -19,7 +18,7 @@ const Content8 = () => {
       <div className={styles.rightContent}>
         <video
           className={styles.video}
-          src={videoSrc}
+          src="https://res.cloudinary.com/dtiaycw2o/video/upload/v1756202989/maternity_h5vewh.webm"
           autoPlay
           loop
           muted

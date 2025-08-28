@@ -55,63 +55,63 @@ export const comments = [
     post: "Haircut",
     comment:
       "First time I'm cuting my hair i feel very happy for that beautiful haircut... 🤗",
-    img: "./people3.png",
+    img: "people3.webp",
   },
   {
     name: "arumugam ramya",
     post: "Haircut, Spa services",
     comment:
       "A absolutely and fantastic job done by vanaja akka I would experience a wonderful service by lovely look a kind person I would experienced ♥️ Thank you for wonderful service 😊.",
-    img: "./people2.png",
+    img: "people2.webp",
   },
   {
     name: "Poornima C",
     post: "Hydrafacial",
     comment:
       "I am happy that I have chosen (hydra facial) service from u. My skin has been glowing. All these days it was tan and pigment now it clear and looks awesome.Every body around me has noticed the difference on my face.",
-    img: "./people3.png",
+    img: "people3.webp",
   },
   {
     name: "Sinduja Sindu",
     post: "Haircut & Hair Spa",
     comment:
       "Lovely looks Beauty salon was so good I did hair cut&Hair sap and facial.good result.🥰 Vanaja akka was so cute❤️ she is explaining everything and she is doing good job I was so happy.✨✨✨✨",
-    img: "./people4.png",
+    img: "people4.webp",
   },
   {
     name: "poornimashree R.N",
     post: "Overall",
     comment:
       "Had a wonderful experience getting ready for my baby shower. She is polite, respects our thoughts, and acts in accordance with our wishes. I heartily suggest her for any events.",
-    img: "./people3.png",
+    img: "people3.webp",
   },
   {
     name: "Anamika Sandula",
     post: "Overall",
     comment:
       "This is really good . She is very good by nature and soft... Price is also very reasonable.. I would suggest to everyone to go there.",
-    img: "./people4.png",
+    img: "people4.webp",
   },
   {
     name: "manjula manju",
     post: "Makeup",
     comment:
       "I would like to thank you for your wonderful work.it was a real pleasure and I love, hair style and makeup I loved it very much, overall awesome quality..",
-    img: "./people5.png",
+    img: "people5.webp",
   },
   {
     name: "Samreen Sam",
     post: "Haircut & Pricing",
     comment:
       "This is really good . She is very good by nature and soft... Price is also very reasonable.. I would suggest to everyone to go there.",
-    img: "./people4.png",
+    img: "people4.webp",
   },
   {
     name: "Anitha ravikumar",
     post: "Overall",
     comment:
       "I visited lovely looks beauty salon for bridal they done in a professionalism ,overall the look was osam .I would like to thank for vanaja Akka and their team..",
-    img: "./people6.png",
+    img: "people6.webp",
   },
 ];
 

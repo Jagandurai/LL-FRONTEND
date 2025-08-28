@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./content7.module.scss";
-import videoSrc from "./bridevideo.mp4";
 
 const Content7 = () => {
   return (
@@ -9,7 +8,7 @@ const Content7 = () => {
       <div className={styles.leftContent}>
         <video
           className={styles.video}
-          src={videoSrc}
+          src="https://res.cloudinary.com/dtiaycw2o/video/upload/v1756199905/bridevideo_ufup1n.webm"
           loop
           autoPlay
           muted

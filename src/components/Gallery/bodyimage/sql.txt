@@ -1,0 +1,30 @@
+CREATE DATABASE IF NOT EXISTS gallery_app
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE gallery_app;
+
+-- Table to store gallery images
+CREATE TABLE IF NOT EXISTS images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(500) NOT NULL,
+    public_id VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Initial images
+INSERT INTO images (image_url, public_id) VALUES
+    ('https://example.com/placeholder1.jpg', 'placeholder_1'),
+    ('https://example.com/placeholder2.jpg', 'placeholder_2');
+
+-- Table to store allowed emails for login
+CREATE TABLE IF NOT EXISTS allowed_users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert initial allowed emails
+INSERT INTO allowed_users (email) VALUES
+    ('lovelylooksv@gmail.com'),
+    ('djagan5656@gmail.com');

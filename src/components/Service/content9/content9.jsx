@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./content9.module.scss";
-import videoSrc from "./babyshower.mp4";
 
 const Content9 = () => {
   return (
@@ -9,7 +8,7 @@ const Content9 = () => {
       <div className={styles.leftContent}>
         <video
           className={styles.video}
-          src={videoSrc}
+          src="https://res.cloudinary.com/dtiaycw2o/video/upload/v1756199932/babyshower_n574dx.webm"
           loop
           autoPlay
           muted
