@@ -4,6 +4,7 @@ import { BookingProvider } from './components/Booking/BookingContext';
 import Booking from './components/Booking/Booking';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Advertisement from './components/Advertisement/Advertisment';
+import ScrollToTop from './ScrollToTop';   // ✅ Import ScrollToTop
 
 // Lazy load components
 const Experties = lazy(() => import('./components/Experties/Experties'));
@@ -27,69 +28,77 @@ import css from './styles/App.module.scss';
 
 const App = () => {
   return (
-    <BookingProvider> {/* Wrap the entire app inside the BookingProvider */}
+    <BookingProvider>
       <Router>
+        <ScrollToTop />   {/* ✅ This ensures scroll resets on route change */}
         <div className={`${css.container}`}>
-          {/* Lazy-loaded Header */}
           <Suspense fallback={null}>
             <Header />
           </Suspense>
 
           <Routes>
-            <Route path="/" element={
-              <>
-                {/* Lazy-loaded Components */}
-                <Suspense fallback={<div>Welcome To Lovely Looks Beauty Salon...</div>}>
-                  <Hero />
-                </Suspense>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Suspense fallback={<div>Welcome To Lovely Looks Beauty Salon...</div>}>
+                    <Hero />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <Welcome />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <Experties />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <Exclusively />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <Work />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <TrailService />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <Portfolio />
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    <People />
+                  </Suspense>
+                </>
+              }
+            />
+
+            <Route
+              path="/service"
+              element={
                 <Suspense fallback={null}>
-                  <Welcome />
+                  <Service />
                 </Suspense>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
                 <Suspense fallback={null}>
-                  <Experties />
+                  <Gallery />
                 </Suspense>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
                 <Suspense fallback={null}>
-                  <Exclusively />
+                  <Contact />
                 </Suspense>
-                <Suspense fallback={null}>
-                  <Work />
-                </Suspense>
-                <Suspense fallback={null}>
-                  <TrailService />
-                </Suspense>
-                <Suspense fallback={null}>
-                  <Portfolio />
-                </Suspense>
-                <Suspense fallback={null}>
-                  <People />
-                </Suspense>
-              </>
-            } />
-            
-            {/* Lazy-loaded Routes */}
-            <Route path="/service" element={
-              <Suspense fallback={null}>
-                <Service />
-              </Suspense>
-            } />
-            <Route path="/gallery" element={
-              <Suspense fallback={null}>
-                <Gallery />
-              </Suspense>
-            } />
-            <Route path="/contact" element={
-              <Suspense fallback={null}>
-                <Contact />
-              </Suspense>
-            } />
+              }
+            />
           </Routes>
 
-          {/* Lazy-loaded Footer */}
           <Suspense fallback={null}>
             <Footer />
           </Suspense>
 
-          {/* Lazy-loaded WhatsApp and Notification */}
           <Suspense fallback={null}>
             <WhatsApp />
           </Suspense>

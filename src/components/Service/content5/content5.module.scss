@@ -3,20 +3,14 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    /* Adjusted gap */
     padding: 2rem;
     flex-wrap: wrap;
-    /* Ensures responsiveness */
     max-width: 1200px;
-    /* Set the maximum width for the container */
     margin: 0 auto;
-    /* Centers the container horizontally */
 
     @media (max-width: 768px) {
         flex-direction: column;
-        /* Stack content vertically on smaller screens */
         padding: 1rem;
-        /* Adjust padding for smaller screens */
     }
 }
 
@@ -52,12 +46,14 @@
         font-size: 3rem;
         margin-bottom: 1rem;
         color: rgb(93, 5, 170);
+        text-align: left;
     }
 
     p {
         font-size: 1.2rem;
         line-height: 1.5;
         color: #333333;
+        text-align: left;
     }
 
     @media (max-width: 768px) {

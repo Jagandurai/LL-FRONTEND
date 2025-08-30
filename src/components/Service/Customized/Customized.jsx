@@ -5,26 +5,27 @@ const Customized = () => {
   const services = [
     {
       icon: 'topnotch.webp',
-      title: '𝓣𝓸𝓹 𝓝𝓸𝓽𝓬𝓱 𝓠𝓾𝓪𝓵𝓲𝓽𝔂',
+      title: 'Top Notch Quality',
       description: 'Topnotch quality in bridal service is by exceptional expertise.',
     },
     {
       icon: 'makeover.webp',
-      title: '𝓟𝓮𝓻𝓼𝓸𝓷𝓪𝓵𝓲𝓼𝓮𝓭 𝓜𝓪𝓴𝓮𝓾𝓹',
+      title: 'Personalised Makeup',
       description: 'A key component of superior quality in bridal services is customized makeup.',
     },
     {
       icon: 'adept.webp',
-      title: '𝓔𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮𝓭 𝓢𝓽𝔂𝓵𝓲𝓼𝓽𝓼',
+      title: 'Experienced Stylists',
       description: 'A professional stylist is essential to get excellent bridal services.',
     },
     {
       icon: 'route.webp',
-      title: '𝓐𝓵𝓵 𝓛𝓸𝓬𝓪𝓽𝓲𝓸𝓷𝓼',
-      description: "Our bridal service in Tamil Nadu and Andhra thrives on personalized attention and care.",
+      title: 'All Locations',
+      description: 'Our bridal service in Tamil Nadu and Andhra thrives on personalized attention and care.',
     },
   ];
 
+  
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Our Services</h2>

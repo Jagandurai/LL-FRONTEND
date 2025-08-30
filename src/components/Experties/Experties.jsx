@@ -54,7 +54,7 @@ const Experties = () => {
         <div className={css.leftSide}>
           {projectExperience.map((exp, i) => (
             <motion.div
-              variants={fadeIn("right", "tween", (i + 1) * 0.2, 1)}
+              variants={fadeIn("right", "tween", (i + 1) * 0.05, 0.3)}
               className={css.exp}
               key={i}
             >
@@ -89,7 +89,7 @@ const Experties = () => {
             </div>
             <div className={`flexCenter ${css.stat}`}>
               <span className="primaryText">{happyClients}+</span>
-              <span className="secondaryText">Happy Clients</span>
+              <span className="secondaryText">Happy Clients </span>
             </div>
           </div>
         </motion.div>

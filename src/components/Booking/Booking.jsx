@@ -2,17 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { useBookingContext } from "./BookingContext";
 import styles from "./Booking.module.scss";
 import emailjs from "emailjs-com";
-import { toast, ToastContainer } from "react-toastify";  // Importing toast and ToastContainer
-import 'react-toastify/dist/ReactToastify.css';  // Importing styles for react-toastify
+import { toast, ToastContainer } from "react-toastify";  
+import 'react-toastify/dist/ReactToastify.css';  
 
 const Booking = () => {
   const { showForm, toggleForm } = useBookingContext();
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
     phoneNumber: "",
     date: "",
-    time: "",
     message: "",
     serviceName: "",
   });
@@ -20,7 +18,7 @@ const Booking = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef(null);
-  const bookingWrapperRef = useRef(null); // Added ref for outside click detection
+  const bookingWrapperRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,29 +29,23 @@ const Booking = () => {
     setFormData({ ...formData, date: e.target.value });
   };
 
-  const handleTimeChange = (e) => {
-    setFormData({ ...formData, time: e.target.value });
-  };
-
   const validateForm = () => {
     const newErrors = {};
     if (!formData.firstName) newErrors.firstName = "First Name is required";
-    if (!formData.lastName) newErrors.lastName = "Last Name is required";
     if (!formData.phoneNumber) newErrors.phoneNumber = "Phone Number is required";
     else if (!/^\d{10}$/.test(formData.phoneNumber)) newErrors.phoneNumber = "Phone number must be 10 digits";
     if (!formData.date) newErrors.date = "Date is required";
-    if (!formData.time) newErrors.time = "Time is required";
     if (!formData.serviceName) newErrors.serviceName = "Service Name is required";
     
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;  // If no errors, return true
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error("Please fix the errors in the form.");  // Show error toast if form validation fails
+      toast.error("Please fix the errors in the form.");  
       return;
     }
 
@@ -70,13 +62,11 @@ const Booking = () => {
         (result) => {
           console.log("Email sent successfully", result.text);
           setIsSubmitted(true);
-          toast.success("Your booking has been submitted successfully!");  // Show success toast
+          toast.success("Your booking has been submitted successfully!");  
           setFormData({
             firstName: "",
-            lastName: "",
             phoneNumber: "",
             date: "",
-            time: "",
             message: "",
             serviceName: "",
           });
@@ -87,7 +77,7 @@ const Booking = () => {
         },
         (error) => {
           console.log("Error sending email", error.text);
-          toast.error("There was an error while submitting your booking. Please try again.");  // Show error toast on failure
+          toast.error("There was an error while submitting your booking. Please try again.");  
         }
       );
 
@@ -124,6 +114,7 @@ const Booking = () => {
               <div className={styles.formContent}>
                 <form ref={formRef} onSubmit={handleSubmit}>
                   <h1 className="bookingheading">CONTACT US</h1>
+                  
                   <div className={styles.nameField}>
                     <input
                       type="text"
@@ -134,15 +125,6 @@ const Booking = () => {
                       required
                     />
                     {errors.firstName && <p className={styles.errorMessage}>{errors.firstName}</p>}
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      placeholder="Last Name"
-                      required
-                    />
-                    {errors.lastName && <p className={styles.errorMessage}>{errors.lastName}</p>}
                   </div>
 
                   <div className={styles.contactField}>
@@ -157,40 +139,16 @@ const Booking = () => {
                     {errors.phoneNumber && <p className={styles.errorMessage}>{errors.phoneNumber}</p>}
                   </div>
 
-                  <div className={styles.dateTimeField}>
-                    <div className={styles.dateField}>
-                      <input
-                        type="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleDateChange}
-                        min="2025-01-05"
-                        required
-                      />
-                      {errors.date && <p className={styles.errorMessage}>{errors.date}</p>}
-                    </div>
-                    <div className={styles.timeField}>
-                      <select
-                        name="time"
-                        value={formData.time}
-                        onChange={handleTimeChange}
-                        required
-                      >
-                        <option value="">Select Time</option>
-                        {Array.from({ length: 11 }, (_, i) => {
-                          const hour = 10 + i;
-                          const ampm = hour >= 12 ? "PM" : "AM";
-                          const displayHour = hour > 12 ? hour - 12 : hour;
-                          const timeValue = `${displayHour}:00 ${ampm}`;
-                          return (
-                            <option key={i} value={timeValue}>
-                              {timeValue}
-                            </option>
-                          );
-                        })}
-                      </select>
-                      {errors.time && <p className={styles.errorMessage}>{errors.time}</p>}
-                    </div>
+                  <div className={styles.dateField}>
+                    <input
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleDateChange}
+                      min="2025-01-05"
+                      required
+                    />
+                    {errors.date && <p className={styles.errorMessage}>{errors.date}</p>}
                   </div>
 
                   <div className={styles.serviceNameField}>
@@ -215,9 +173,19 @@ const Booking = () => {
                     />
                   </div>
 
-                  <button type="submit" className={styles.bookButton}>
-                    Book Now
-                  </button>
+                  {/* ✅ Button Group */}
+                  <div className={styles.buttonGroup}>
+                    <button type="submit" className={styles.bookButton}>
+                      Book Now
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.closeButton}
+                      onClick={toggleForm}
+                    >
+                      Close
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -225,7 +193,6 @@ const Booking = () => {
         </div>
       )}
 
-      {/* ToastContainer to display the toasts */}
       <ToastContainer />
     </>
   );

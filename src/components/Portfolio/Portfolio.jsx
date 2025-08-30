@@ -8,7 +8,7 @@ const Portfolio = () => {
     variants={staggerChildren}
     initial="hidden"
     whileInView="show"
-    viewport={{ once: false, amount: 0.03 }}
+    viewport={{ once: false, amount: 0.1 }}
     className={`paddings ${css.wrapper}`}>
 
       <a className="anchor" id="portfolio"></a>

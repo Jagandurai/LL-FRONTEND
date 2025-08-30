@@ -9,11 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useSwipeable } from "react-swipeable";
 
-// ✅ API base URL (auto-switches between dev & prod)
-const API_BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://YOUR_BACKEND_URL/api/gallery"
-    : "http://localhost:5000/api/gallery";
+// ✅ API base URL from environment variable
+const API_BASE_URL = import.meta.env.VITE_API_URL + "/api/gallery";
 
 const BodyImage = () => {
   const [previewImage, setPreviewImage] = useState(null);
@@ -51,7 +48,6 @@ const BodyImage = () => {
       if (e.key === "Escape") closePreview();
     };
     window.addEventListener("keydown", handleKeyDown);
-
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [previewImage, previewImageIndex, filteredImages]);
 
@@ -64,21 +60,18 @@ const BodyImage = () => {
         window.history.pushState(null, "", window.location.href);
       }
     };
-
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, [previewImage]);
 
   const fetchImages = async (type = "") => {
     try {
-      const res = await axios.get(API_BASE_URL, {
-        params: type ? { type } : {},
-      });
+      const res = await axios.get(API_BASE_URL, { params: type ? { type } : {} });
       setGalleryImages(res.data);
       setFilteredImages(res.data);
     } catch (err) {
       console.error("Error fetching images:", err);
-      toast.error("❌ Failed to load gallery");
+      toast.error("Failed to load gallery");
     }
   };
 
@@ -89,7 +82,7 @@ const BodyImage = () => {
         setIsAdmin(true);
       } else {
         handleLogout(false);
-        toast.error("❌ You are not an admin");
+        toast.error("You are not an admin");
       }
     } catch (err) {
       console.error("Admin check error:", err);
@@ -102,9 +95,7 @@ const BodyImage = () => {
         resolve(file);
         return;
       }
-
       toast.info("⚡ Compressing image...");
-
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (event) => {
@@ -134,11 +125,11 @@ const BodyImage = () => {
 
   const handleUploadClick = async () => {
     if (!selectedFile) {
-      toast.warn("⚠️ Please choose a file first");
+      toast.warn("Please choose a file first");
       return;
     }
     if (!selectedType) {
-      toast.warn("⚠️ Please select a type (Makeup / Hairstyle)");
+      toast.warn("Please select a type (Makeup / Hairstyle)");
       return;
     }
 
@@ -155,38 +146,21 @@ const BodyImage = () => {
 
     try {
       await axios.post(API_BASE_URL, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "x-user-email": userEmail,
-        },
+        headers: { "Content-Type": "multipart/form-data", "x-user-email": userEmail },
       });
-
       await fetchImages();
       setSelectedFile(null);
       setSelectedType("");
-
-      toast.update(uploadToast, {
-        render: "✅ Image uploaded successfully!",
-        type: "success",
-        isLoading: false,
-        autoClose: 2000,
-      });
+      toast.update(uploadToast, { render: "Image uploaded successfully!", type: "success", isLoading: false, autoClose: 2000 });
     } catch (err) {
       console.error("Upload error:", err);
-      toast.update(uploadToast, {
-        render: "❌ Failed to upload image",
-        type: "error",
-        isLoading: false,
-        autoClose: 2000,
-      });
+      toast.update(uploadToast, { render: "Failed to upload image", type: "error", isLoading: false, autoClose: 2000 });
     }
   };
 
   const handleImageDelete = async (image) => {
     try {
-      await axios.delete(`${API_BASE_URL}/${image.id}`, {
-        headers: { "x-user-email": userEmail },
-      });
+      await axios.delete(`${API_BASE_URL}/${image.id}`, { headers: { "x-user-email": userEmail } });
       const newImages = galleryImages.filter((img) => img.id !== image.id);
       setGalleryImages(newImages);
       setFilteredImages(newImages);
@@ -194,7 +168,7 @@ const BodyImage = () => {
       toast.success("🗑️ Image deleted successfully!");
     } catch (err) {
       console.error("Delete error:", err);
-      toast.error("❌ Failed to delete image");
+      toast.error("Failed to delete image");
     }
   };
 
@@ -202,7 +176,6 @@ const BodyImage = () => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
       const email = decoded.email;
-
       setIsLoggedIn(true);
       setUserEmail(email);
       localStorage.setItem("isLoggedIn", "true");
@@ -211,14 +184,14 @@ const BodyImage = () => {
       const res = await axios.post(`${API_BASE_URL}/check-admin`, { email });
       if (res.data.success) {
         setIsAdmin(true);
-        toast.success(`✅ Welcome: ${email}`);
+        toast.success(`Welcome: ${email}`);
       } else {
         handleLogout(false);
-        toast.error("❌ You are not an admin");
+        toast.error("You are not an admin");
       }
     } catch (err) {
       console.error("JWT/Login error:", err);
-      toast.error("❌ Failed to process login.");
+      toast.error("Failed to process login.");
     }
   };
 
@@ -229,7 +202,7 @@ const BodyImage = () => {
     setIsLoggedIn(false);
     setUserEmail("");
     setIsAdmin(false);
-    if (showToast) toast.info("👋 Logged out successfully");
+    if (showToast) toast.info("Logged out successfully");
   };
 
   const handleImageClick = (image, index) => {
@@ -253,8 +226,7 @@ const BodyImage = () => {
 
   const prevImage = () => {
     if (previewImageIndex !== null) {
-      const prevIndex =
-        previewImageIndex === 0 ? filteredImages.length - 1 : previewImageIndex - 1;
+      const prevIndex = previewImageIndex === 0 ? filteredImages.length - 1 : previewImageIndex - 1;
       setPreviewImage(filteredImages[prevIndex].image_url);
       setPreviewImageIndex(prevIndex);
     }
@@ -266,11 +238,7 @@ const BodyImage = () => {
 
   const filterByType = (type) => {
     setActiveFilter(type);
-    if (type === "all") {
-      setFilteredImages(galleryImages);
-    } else {
-      setFilteredImages(galleryImages.filter((img) => img.type === type));
-    }
+    setFilteredImages(type === "all" ? galleryImages : galleryImages.filter((img) => img.type === type));
   };
 
   const swipeHandlers = useSwipeable({
@@ -284,16 +252,11 @@ const BodyImage = () => {
     <div className={styles.galleryContainer}>
       <p className={styles.description}>Explore our amazing Makeup & Hairstyle collections.</p>
 
-      <button onClick={handleBookNowClick} className={styles.bookButton}>
-        View Our Service
-      </button>
+      <button onClick={handleBookNowClick} className={styles.bookButton}>View Our Service</button>
 
       {!isLoggedIn && (
         <div style={{ marginTop: "20px" }}>
-          <GoogleLogin
-            onSuccess={handleLoginSuccess}
-            onError={() => toast.error("❌ Google Login Failed")}
-          />
+          <GoogleLogin onSuccess={handleLoginSuccess} onError={() => toast.error("Google Login Failed")} />
         </div>
       )}
 
@@ -302,106 +265,44 @@ const BodyImage = () => {
           <input type="file" accept="image/*" onChange={handleFileChange} />
           <div className={styles.checkboxGroup}>
             <label className={selectedType === "makeup" ? styles.active : ""}>
-              <input
-                type="radio"
-                name="imageType"
-                value="makeup"
-                checked={selectedType === "makeup"}
-                onChange={(e) => setSelectedType(e.target.value)}
-              />
-              Makeup
+              <input type="radio" name="imageType" value="makeup" checked={selectedType === "makeup"} onChange={(e) => setSelectedType(e.target.value)} /> Makeup
             </label>
             <label className={selectedType === "hairstyle" ? styles.active : ""}>
-              <input
-                type="radio"
-                name="imageType"
-                value="hairstyle"
-                checked={selectedType === "hairstyle"}
-                onChange={(e) => setSelectedType(e.target.value)}
-              />
-              Hairstyle
+              <input type="radio" name="imageType" value="hairstyle" checked={selectedType === "hairstyle"} onChange={(e) => setSelectedType(e.target.value)} /> Hairstyle
             </label>
           </div>
-          <button
-            onClick={handleUploadClick}
-            disabled={!selectedFile || !selectedType}
-            className={styles.uploadButton}
-          >
-            Upload Files
-          </button>
-          <button onClick={handleLogout} className={styles.logoutButton}>
-            Logout
-          </button>
+          <button onClick={handleUploadClick} disabled={!selectedFile || !selectedType} className={styles.uploadButton}>Upload Files</button>
+          <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
         </div>
       )}
 
       <div className={styles.filterButtons}>
-        <button
-          onClick={() => filterByType("all")}
-          className={activeFilter === "all" ? styles.active : ""}
-        >
-          All
-        </button>
-        <button
-          onClick={() => filterByType("makeup")}
-          className={activeFilter === "makeup" ? styles.active : ""}
-        >
-          Makeup
-        </button>
-        <button
-          onClick={() => filterByType("hairstyle")}
-          className={activeFilter === "hairstyle" ? styles.active : ""}
-        >
-          Hairstyle
-        </button>
+        <button onClick={() => filterByType("all")} className={activeFilter === "all" ? styles.active : ""}>All</button>
+        <button onClick={() => filterByType("makeup")} className={activeFilter === "makeup" ? styles.active : ""}>Makeup</button>
+        <button onClick={() => filterByType("hairstyle")} className={activeFilter === "hairstyle" ? styles.active : ""}>Hairstyle</button>
       </div>
 
       <div className={styles.gallery}>
-        {filteredImages.length > 0 ? (
-          filteredImages.map((image, index) => (
-            <div className={styles.item} key={image.id || index}>
-              <img
-                src={image.image_url || image}
-                alt={`Gallery Item ${index + 1}`}
-                onClick={() => handleImageClick(image, index)}
-              />
-            </div>
-          ))
-        ) : (
-          <p className={styles.noImages}>No images found.</p>
-        )}
+        {filteredImages.length > 0 ? filteredImages.map((image, index) => (
+          <div className={styles.item} key={image.id || index}>
+            <img src={image.image_url || image} alt={`Gallery Item ${index + 1}`} onClick={() => handleImageClick(image, index)} />
+          </div>
+        )) : <p className={styles.noImages}>No images found.</p>}
       </div>
 
       {previewImage && (
         <div className={styles.previewOverlay}>
           <div className={styles.previewTopBar}>
-            <button className={styles.iconButton} onClick={closePreview}>
-              <X size={24} />
-            </button>
+            <button className={styles.iconButton} onClick={closePreview}><X size={24} /></button>
           </div>
 
           <div className={styles.previewContainer} {...swipeHandlers}>
-            <button className={`${styles.arrow} ${styles.leftArrow}`} onClick={prevImage}>
-              <ChevronLeft size={28} />
-            </button>
-
+            <button className={`${styles.arrow} ${styles.leftArrow}`} onClick={prevImage}><ChevronLeft size={28} /></button>
             <img src={previewImage} alt="Preview" className={styles.previewImage} />
-
             {isLoggedIn && isAdmin && (
-              <button
-                className={styles.deleteIcon}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleImageDelete(filteredImages[previewImageIndex]);
-                }}
-              >
-                🗑️
-              </button>
+              <button className={styles.deleteIcon} onClick={(e) => { e.stopPropagation(); handleImageDelete(filteredImages[previewImageIndex]); }}>🗑️</button>
             )}
-
-            <button className={`${styles.arrow} ${styles.rightArrow}`} onClick={nextImage}>
-              <ChevronRight size={28} />
-            </button>
+            <button className={`${styles.arrow} ${styles.rightArrow}`} onClick={nextImage}><ChevronRight size={28} /></button>
           </div>
         </div>
       )}
