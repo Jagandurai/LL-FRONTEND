@@ -708,3 +708,17 @@
         padding: 8px;
     }
 }
+
+//skeletonItem
+
+.skeletonItem {
+  width: 200px;       
+  height: 200px;      
+  background: linear-gradient(
+    to right,
+    #e0e0e0 0%,
+    #f0f0f0 50%,
+    #e0e0e0 100%
+  );
+  background-size: 800px 200px;
+  border-radius:
