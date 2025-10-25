@@ -711,9 +711,26 @@
 
 //skeletonItem
 
+
 .skeletonItem {
-  width: 200px;       
-  height: 200px;      
+  width: 200px;      /* same as gallery image */
+  height: 200px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  margin: 10px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeletonItem {
   background: linear-gradient(
     to right,
     #e0e0e0 0%,
@@ -721,4 +738,4 @@
     #e0e0e0 100%
   );
   background-size: 800px 200px;
-  border-radius:
+}
