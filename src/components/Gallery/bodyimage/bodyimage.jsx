@@ -24,6 +24,7 @@ const BodyImage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedType, setSelectedType] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [isLoading, setIsLoading] = useState(true); // ✅ skeleton loader
 
   const navigate = useNavigate();
 
@@ -64,14 +65,18 @@ const BodyImage = () => {
     return () => window.removeEventListener("popstate", handlePopState);
   }, [previewImage]);
 
+  // ✅ Fetch images with loading state
   const fetchImages = async (type = "") => {
     try {
+      setIsLoading(true); // start skeleton
       const res = await axios.get(API_BASE_URL, { params: type ? { type } : {} });
       setGalleryImages(res.data);
       setFilteredImages(res.data);
     } catch (err) {
       console.error("Error fetching images:", err);
       toast.error("Failed to load gallery");
+    } finally {
+      setIsLoading(false); // end skeleton
     }
   };
 
@@ -119,24 +124,14 @@ const BodyImage = () => {
     });
   };
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
+  const handleFileChange = (e) => setSelectedFile(e.target.files[0]);
 
   const handleUploadClick = async () => {
-    if (!selectedFile) {
-      toast.warn("Please choose a file first");
-      return;
-    }
-    if (!selectedType) {
-      toast.warn("Please select a type (Makeup / Hairstyle)");
-      return;
-    }
+    if (!selectedFile) return toast.warn("Please choose a file first");
+    if (!selectedType) return toast.warn("Please select a type (Makeup / Hairstyle)");
 
     let fileToUpload = selectedFile;
-    if (selectedFile.size > 9 * 1024 * 1024) {
-      fileToUpload = await compressImage(selectedFile, 0.9);
-    }
+    if (selectedFile.size > 9 * 1024 * 1024) fileToUpload = await compressImage(selectedFile, 0.9);
 
     const formData = new FormData();
     formData.append("image", fileToUpload);
@@ -232,9 +227,7 @@ const BodyImage = () => {
     }
   };
 
-  const handleBookNowClick = () => {
-    navigate("/service");
-  };
+  const handleBookNowClick = () => navigate("/service");
 
   const filterByType = (type) => {
     setActiveFilter(type);
@@ -283,11 +276,16 @@ const BodyImage = () => {
       </div>
 
       <div className={styles.gallery}>
-        {filteredImages.length > 0 ? filteredImages.map((image, index) => (
-          <div className={styles.item} key={image.id || index}>
-            <img src={image.image_url || image} alt={`Gallery Item ${index + 1}`} onClick={() => handleImageClick(image, index)} />
-          </div>
-        )) : <p className={styles.noImages}>No images found.</p>}
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, index) => <div key={index} className={styles.skeletonItem}></div>)
+          : filteredImages.length > 0
+          ? filteredImages.map((image, index) => (
+              <div className={styles.item} key={image.id || index}>
+                <img src={image.image_url || image} alt={`Gallery Item ${index + 1}`} onClick={() => handleImageClick(image, index)} />
+              </div>
+            ))
+          : <p className={styles.noImages}>No images found.</p>
+        }
       </div>
 
       {previewImage && (
