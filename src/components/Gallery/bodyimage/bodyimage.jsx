@@ -284,7 +284,7 @@ const BodyImage = () => {
                 <img src={image.image_url || image} alt={`Gallery Item ${index + 1}`} onClick={() => handleImageClick(image, index)} />
               </div>
             ))
-          : <p className={styles.noImages}>No images found.</p>
+          : <p className={styles.noImages}>Gallery is Loading........wait for few mins or try to refresh the page.....</p>
         }
       </div>
 
