@@ -10,7 +10,7 @@ import ScrollToTop from './ScrollToTop';   // ✅ Import ScrollToTop
 const Experties = lazy(() => import('./components/Experties/Experties'));
 const Footer = lazy(() => import('./components/Footer/Footer'));
 const Header = lazy(() => import('./components/Header/Header'));
-// const Hero = lazy(() => import('./components/Hero/Hero'));
+const Hero = lazy(() => import('./components/Hero/Hero'));
 const People = lazy(() => import('./components/People/People'));
 const Portfolio = lazy(() => import('./components/Portfolio/Portfolio'));
 const Work = lazy(() => import('./components/Work/Work'));
@@ -41,9 +41,9 @@ const App = () => {
               path="/"
               element={
                 <>
-                  {/* <Suspense fallback={<div>Welcome To Lovely Looks Beauty Salon...</div>}>
+                  <Suspense fallback={<div>Welcome To Lovely Looks Beauty Salon...</div>}>
                     <Hero />
-                  </Suspense> */}
+                  </Suspense>
                   <Suspense fallback={null}>
                     <Welcome />
                   </Suspense>
