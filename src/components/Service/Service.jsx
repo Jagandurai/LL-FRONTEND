@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 // Lazy load components
 const Hero = lazy(() => import("./Hero/Hero"));
-const ServiceList = lazy(() => import("./ServiceList/ServiceList"));
+// const ServiceList = lazy(() => import("./ServiceList/ServiceList"));
 const Customized = lazy(() => import("./Customized/Customized"));
 const Content1 = lazy(() => import("./content1/content1"));
 const Content2 = lazy(() => import("./content2/content2"));
@@ -66,9 +66,9 @@ const Service = () => {
       <Suspense fallback={null}>
         <Content9 />
       </Suspense>
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ServiceList />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 };
