@@ -4,6 +4,7 @@
     href="https://img.icons8.com/?size=100&id=6CHUeXwSVsul&format=png&color=000000" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Inline critical CSS (tiny global reset) -->
   <style>
     * {
       margin: 0;
@@ -14,11 +15,19 @@
     }
   </style>
 
-  
-  <link rel="stylesheet" type="text/css" charset="UTF-8"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+  <!-- Preload fonts (optional but recommended) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Slick Carousel CSS (kept as-is) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css">
+  </noscript>
 
   <!-- Ionicons CDN -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
